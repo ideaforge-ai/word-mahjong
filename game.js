@@ -2569,17 +2569,11 @@ function renderHands() {
 
     handElement.innerHTML = "";
 
-    // 每次渲染前清理赢家布局类，避免重新开始后残留
     handElement.classList.remove("side-winner-hand", "top-winner-hand");
 
     const shouldRevealComputerHand =
       gameState.gameOver && gameState.winnerIndex === index && !player.isHuman;
 
-    // index:
-    // 0 = 你
-    // 1 = 电脑玩家 2，右侧
-    // 2 = 电脑玩家 3，上方
-    // 3 = 电脑玩家 4，左侧
     const isTopWinner = shouldRevealComputerHand && index === 2;
     const isSideWinner = shouldRevealComputerHand && (index === 1 || index === 3);
 
@@ -2608,12 +2602,18 @@ function renderHands() {
         tileElement.draggable = !gameState.gameOver;
         tileElement.dataset.index = tileIndex;
 
+        let pointerStartX = 0;
+        let pointerStartY = 0;
+        let pointerMoved = false;
+        let pointerDragging = false;
+
         tileElement.addEventListener("click", () => {
-          if (!gameState.gameOver) {
+          if (!gameState.gameOver && !pointerDragging) {
             selectHumanTile(tileIndex);
           }
         });
 
+        // 电脑端原生拖拽：保留
         tileElement.addEventListener("dragstart", (e) => {
           if (gameState.gameOver) {
             e.preventDefault();
@@ -2642,6 +2642,75 @@ function renderHands() {
           e.preventDefault();
           const targetIndex = Number(tileElement.dataset.index);
           moveHumanTile(draggedTileIndex, targetIndex);
+        });
+
+        // 手机 / 平板触屏拖拽
+        tileElement.addEventListener("pointerdown", (e) => {
+          if (gameState.gameOver) return;
+
+          pointerStartX = e.clientX;
+          pointerStartY = e.clientY;
+          pointerMoved = false;
+          pointerDragging = false;
+          draggedTileIndex = tileIndex;
+
+          tileElement.setPointerCapture(e.pointerId);
+        });
+
+        tileElement.addEventListener("pointermove", (e) => {
+          if (gameState.gameOver || draggedTileIndex === null) return;
+
+          const dx = e.clientX - pointerStartX;
+          const dy = e.clientY - pointerStartY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance > 8) {
+            pointerMoved = true;
+            pointerDragging = true;
+            tileElement.classList.add("dragging");
+            e.preventDefault();
+          }
+        });
+
+        tileElement.addEventListener("pointerup", (e) => {
+          if (gameState.gameOver) return;
+
+          tileElement.classList.remove("dragging");
+
+          if (pointerMoved && draggedTileIndex !== null) {
+            const targetElement = document.elementFromPoint(e.clientX, e.clientY);
+            const targetTile = targetElement
+              ? targetElement.closest(".human-hand .tile")
+              : null;
+
+            if (targetTile && targetTile.dataset.index !== undefined) {
+              const targetIndex = Number(targetTile.dataset.index);
+              moveHumanTile(draggedTileIndex, targetIndex);
+            } else {
+              draggedTileIndex = null;
+            }
+
+            e.preventDefault();
+
+            setTimeout(() => {
+              pointerDragging = false;
+            }, 0);
+
+            return;
+          }
+
+          draggedTileIndex = null;
+
+          setTimeout(() => {
+            pointerDragging = false;
+          }, 0);
+        });
+
+        tileElement.addEventListener("pointercancel", () => {
+          tileElement.classList.remove("dragging");
+          draggedTileIndex = null;
+          pointerMoved = false;
+          pointerDragging = false;
         });
 
         handElement.appendChild(tileElement);
