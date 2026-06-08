@@ -803,23 +803,44 @@ function sortHumanHand() {
   render();
 }
 
-function swapHumanTiles(fromIndex, toIndex) {
-  if (fromIndex === null || toIndex === null || fromIndex === toIndex) return;
+function moveHumanTile(fromIndex, toIndex) {
+  if (
+    fromIndex === null ||
+    toIndex === null ||
+    fromIndex === toIndex
+  ) {
+    return;
+  }
 
   const human = gameState.players[0];
 
-  const temp = human.hand[fromIndex];
-  human.hand[fromIndex] = human.hand[toIndex];
-  human.hand[toIndex] = temp;
+  const movingTile = human.hand.splice(fromIndex, 1)[0];
+
+  // 删除前面的牌后，目标索引需要修正
+  if (fromIndex < toIndex) {
+    toIndex--;
+  }
+
+  // 插入到目标牌左边
+  human.hand.splice(toIndex, 0, movingTile);
 
   if (selectedTileIndex === fromIndex) {
     selectedTileIndex = toIndex;
-  } else if (selectedTileIndex === toIndex) {
-    selectedTileIndex = fromIndex;
+  } else if (
+    selectedTileIndex > fromIndex &&
+    selectedTileIndex < toIndex
+  ) {
+    selectedTileIndex--;
+  } else if (
+    selectedTileIndex < fromIndex &&
+    selectedTileIndex >= toIndex
+  ) {
+    selectedTileIndex++;
   }
 
   draggedTileIndex = null;
-  setMessage("已调整手牌顺序。可以点击“提示单词”查看当前可组成单词。");
+
+  setMessage("已调整手牌顺序。");
   render();
 }
 
@@ -830,8 +851,11 @@ function endGame(message) {
 }
 
 function setMessage(message) {
-  elements.messageText.textContent = message;
+  if (elements.messageText) {
+    elements.messageText.textContent = message;
+  }
 }
+
 
 function getLetterCounts(tiles) {
   const counts = {};
@@ -2617,7 +2641,7 @@ function renderHands() {
 
           e.preventDefault();
           const targetIndex = Number(tileElement.dataset.index);
-          swapHumanTiles(draggedTileIndex, targetIndex);
+          moveHumanTile(draggedTileIndex, targetIndex);
         });
 
         handElement.appendChild(tileElement);
