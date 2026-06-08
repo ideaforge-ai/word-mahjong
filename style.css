@@ -1333,8 +1333,6 @@ button:disabled {
    V1.1 触屏拖拽优化：手机 / 平板 / 鼠标统一手感
    ========================================================= */
 
-.tile,
-.human-hand,
 .human-hand .tile {
   touch-action: none;
   -webkit-user-select: none;
