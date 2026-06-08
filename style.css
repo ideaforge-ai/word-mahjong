@@ -1328,3 +1328,21 @@ button:disabled {
 .review-mode-panel {
   margin-top: 6px;
 }
+
+/* =========================================================
+   V1.1 触屏拖拽优化：手机 / 平板 / 鼠标统一手感
+   ========================================================= */
+
+.tile,
+.human-hand,
+.human-hand .tile {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.human-hand .tile.dragging {
+  opacity: 0.55;
+  transform: scale(1.08);
+}
