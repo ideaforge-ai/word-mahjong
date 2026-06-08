@@ -14,7 +14,7 @@
 
 ## 在线体验
 
-GitHub Pages 地址待补充。
+https://ideaforge-ai.github.io/word-mahjong/
 
 ## 本地运行
 
