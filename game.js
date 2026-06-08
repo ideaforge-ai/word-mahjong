@@ -844,6 +844,26 @@ function moveHumanTile(fromIndex, toIndex) {
   render();
 }
 
+function moveHumanTileToEnd(fromIndex) {
+  if (fromIndex === null || fromIndex < 0) return;
+
+  const human = gameState.players[0];
+
+  if (fromIndex >= human.hand.length - 1) {
+    draggedTileIndex = null;
+    return;
+  }
+
+  const movingTile = human.hand.splice(fromIndex, 1)[0];
+  human.hand.push(movingTile);
+
+  selectedTileIndex = human.hand.length - 1;
+  draggedTileIndex = null;
+
+  setMessage("已将字母牌移动到末尾。");
+  render();
+}
+
 function endGame(message) {
   gameState.gameOver = true;
   setMessage(message);
@@ -2571,28 +2591,16 @@ function renderHands() {
     const handElement = elements[`hand${index + 1}`];
 
     handElement.innerHTML = "";
-
-    // 每次渲染前清理赢家布局类，避免重新开始后残留
     handElement.classList.remove("side-winner-hand", "top-winner-hand");
 
     const shouldRevealComputerHand =
       gameState.gameOver && gameState.winnerIndex === index && !player.isHuman;
 
-    // index:
-    // 0 = 你
-    // 1 = 电脑玩家 2，右侧
-    // 2 = 电脑玩家 3，上方
-    // 3 = 电脑玩家 4，左侧
     const isTopWinner = shouldRevealComputerHand && index === 2;
     const isSideWinner = shouldRevealComputerHand && (index === 1 || index === 3);
 
-    if (isTopWinner) {
-      handElement.classList.add("top-winner-hand");
-    }
-
-    if (isSideWinner) {
-      handElement.classList.add("side-winner-hand");
-    }
+    if (isTopWinner) handElement.classList.add("top-winner-hand");
+    if (isSideWinner) handElement.classList.add("side-winner-hand");
 
     if (player.isHuman) {
       player.hand.forEach((tile, tileIndex) => {
@@ -2604,56 +2612,113 @@ function renderHands() {
         }
 
         tileElement.textContent = tile.letter;
+        tileElement.dataset.index = tileIndex;
+        tileElement.draggable = false;
         tileElement.title = gameState.gameOver
           ? "游戏已结束"
           : "点击选中；拖动可调整顺序";
 
-        tileElement.draggable = !gameState.gameOver;
-        tileElement.dataset.index = tileIndex;
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        let ghostTile = null;
 
-        tileElement.addEventListener("click", () => {
-          if (!gameState.gameOver) {
-            selectHumanTile(tileIndex);
-          }
+        tileElement.addEventListener("pointerdown", (e) => {
+          if (gameState.gameOver) return;
+
+          startX = e.clientX;
+          startY = e.clientY;
+          isDragging = false;
+          draggedTileIndex = tileIndex;
+
+          tileElement.setPointerCapture(e.pointerId);
         });
 
-        tileElement.addEventListener("dragstart", (e) => {
-          if (gameState.gameOver) {
-            e.preventDefault();
+        tileElement.addEventListener("pointermove", (e) => {
+          if (gameState.gameOver || draggedTileIndex === null) return;
+
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 8 && !isDragging) return;
+
+          if (!isDragging) {
+            isDragging = true;
+            tileElement.classList.add("dragging");
+
+            ghostTile = tileElement.cloneNode(true);
+            ghostTile.classList.add("dragging");
+            ghostTile.style.position = "fixed";
+            ghostTile.style.left = "0px";
+            ghostTile.style.top = "0px";
+            ghostTile.style.zIndex = "9999";
+            ghostTile.style.pointerEvents = "none";
+            ghostTile.style.opacity = "0.85";
+            document.body.appendChild(ghostTile);
+          }
+
+          if (ghostTile) {
+            ghostTile.style.transform =
+              `translate(${e.clientX - 22}px, ${e.clientY - 28}px) scale(1.08)`;
+          }
+
+          e.preventDefault();
+        });
+
+        tileElement.addEventListener("pointerup", (e) => {
+          if (gameState.gameOver) return;
+
+          tileElement.classList.remove("dragging");
+
+          if (ghostTile) {
+            ghostTile.remove();
+            ghostTile = null;
+          }
+
+          if (!isDragging) {
+            draggedTileIndex = null;
+            selectHumanTile(tileIndex);
             return;
           }
 
-          draggedTileIndex = tileIndex;
-          tileElement.classList.add("dragging");
-          e.dataTransfer.effectAllowed = "move";
-        });
+          const targetElement = document.elementFromPoint(e.clientX, e.clientY);
+          const targetTile = targetElement
+            ? targetElement.closest(".human-hand .tile")
+            : null;
 
-        tileElement.addEventListener("dragend", () => {
-          tileElement.classList.remove("dragging");
-        });
+          if (targetTile && targetTile.dataset.index !== undefined) {
+            const targetIndex = Number(targetTile.dataset.index);
+            moveHumanTile(draggedTileIndex, targetIndex);
+          } else {
+            const targetHand = targetElement
+              ? targetElement.closest(".human-hand")
+              : null;
 
-        tileElement.addEventListener("dragover", (e) => {
-          if (!gameState.gameOver) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = "move";
+            if (targetHand) {
+              moveHumanTileToEnd(draggedTileIndex);
+            } else {
+              draggedTileIndex = null;
+            }
           }
+
+          isDragging = false;
+          e.preventDefault();
         });
 
-        tileElement.addEventListener("drop", (e) => {
-          if (gameState.gameOver) return;
+        tileElement.addEventListener("pointercancel", () => {
+          tileElement.classList.remove("dragging");
 
-          e.preventDefault();
-          const targetIndex = Number(tileElement.dataset.index);
-          moveHumanTile(draggedTileIndex, targetIndex);
+          if (ghostTile) {
+            ghostTile.remove();
+            ghostTile = null;
+          }
+
+          draggedTileIndex = null;
+          isDragging = false;
         });
 
         handElement.appendChild(tileElement);
-      });
-
-      handElement.addEventListener("dragover", (e) => {
-        if (!gameState.gameOver) {
-          e.preventDefault();
-        }
       });
 
       return;
