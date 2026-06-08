@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Mahjong | 单词麻将</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="game-header">
+      <div>
+        <h1>Word Mahjong</h1>
+        <p>单词麻将 V0.9.5 - 复习模式测试版</p>
+      </div>
+
+      <div class="header-actions">
+        <label class="difficulty-label" for="difficultySelect">难度：</label>
+        <select id="difficultySelect" class="difficulty-select">
+          <option value="basic">基础</option>
+          <option value="intermediate" selected>进阶</option>
+          <option value="advanced">高阶</option>
+          <option value="academic">学术</option>
+          <option value="challenge">挑战</option>
+         </select>
+        
+        <button id="nextRoundBtn" class="secondary-btn">下一局</button>
+        <button id="restartBtn" class="primary-btn">重新开始</button>
+      </div>
+    </header>
+
+    <main class="mahjong-table">
+      <!-- 顶部电脑玩家：电脑玩家 3 -->
+      <section class="player-area top-player" id="player-3">
+        <div class="player-title">电脑玩家 3</div>
+        <div class="player-score" id="score-3">100 分</div>
+        <div class="computer-hand" id="hand-3"></div>
+        <div class="meld-area" id="meld-3">已成词区</div>
+      </section>
+
+      <!-- 左侧电脑玩家：电脑玩家 4 -->
+      <section class="player-area left-player" id="player-4">
+        <div class="player-title">电脑玩家 4</div>
+        <div class="player-score" id="score-4">100 分</div>
+        <div class="computer-hand vertical-hand" id="hand-4"></div>
+        <div class="meld-area" id="meld-4">已成词区</div>
+      </section>
+
+      <!-- 中央区域 -->
+      <section class="center-area">
+        <div class="status-panel">
+          <div id="currentPlayerText">当前回合：-</div>
+          <div id="wallCountText">剩余牌数：-</div>
+          <div id="difficultyText">当前难度：标准</div>
+          <div id="roundScoreText">本局得分：-</div>
+          <div id="messageText">点击“摸牌”开始你的回合</div>
+        </div>
+
+
+
+
+
+      <div class="discard-area">
+        <div id="discardView" class="discard-view">
+          <h2>弃牌区</h2>
+          <div id="discardPile" class="discard-pile"></div>
+          </div>
+
+          <div id="reviewView" class="review-view hidden">
+            <div class="review-title">本局复盘</div>
+            <div id="reviewPanel" class="review-content">
+              胡牌后显示本局单词复盘
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="action-panel">
+          <button id="drawBtn" class="primary-btn" style="display:none;">摸牌</button>
+          <button id="autoBtn" class="secondary-btn" style="display:none;">电脑继续</button>
+        </div>
+      </section>
+
+      <!-- 右侧电脑玩家：电脑玩家 2 -->
+      <section class="player-area right-player" id="player-2">
+        <div class="player-title">电脑玩家 2</div>
+        <div class="player-score" id="score-2">100 分</div>
+        <div class="computer-hand vertical-hand" id="hand-2"></div>
+        <div class="meld-area" id="meld-2">已成词区</div>
+      </section>
+
+      <!-- 底部真人玩家 -->
+      <section class="player-area bottom-player" id="player-1">
+        <div class="player-title">你</div>
+        <div class="player-score" id="score-1">100 分</div>
+        <div class="meld-area" id="meld-1">已成词区</div>
+
+        <div class="human-hand" id="hand-1"></div>
+
+        <div id="wordHintPanel" class="word-hint-panel">
+          暂无单词提示
+        </div>
+
+
+
+
+        <div class="human-actions">
+          <button id="sortBtn" class="secondary-btn">按字母排序</button>
+          <button id="wordHintBtn" class="secondary-btn">提示单词</button>
+          <button id="winCheckBtn" class="secondary-btn">胡牌</button>
+          <button id="discardSelectedBtn" class="primary-btn">打出选中牌</button>
+          <span class="hint-text">提示：点击选牌，拖动理牌，点击“胡牌”判断是否可全部成词。</span>
+        </div>
+
+        <div class="dictionary-panel">
+          <div class="dictionary-title">查词功能</div>
+          <div class="dictionary-actions">
+            <input
+              id="dictInput"
+              class="dict-input"
+              type="text"
+              placeholder="请输入英文单词，例如 cause"
+            />
+            <button id="dictSearchBtn" class="secondary-btn">查词</button>
+          </div>
+          <div id="dictResultPanel" class="dict-result-panel">
+            暂无查词结果
+          </div>
+        </div>
+
+        <div class="review-words-panel">
+          <div class="review-words-title">
+            复习词表 <span id="reviewWordsCount">0</span> 个
+          </div>
+
+          <div class="review-words-actions">
+            <button id="toggleReviewWordsBtn" class="secondary-btn">查看复习词</button>
+            <button id="startReviewModeBtn" class="secondary-btn">开始复习</button>
+            <button id="clearReviewWordsBtn" class="secondary-btn">清空复习词</button>
+          </div>
+
+          <div id="reviewWordsList" class="review-words-list hidden">
+            暂无复习词
+          </div>
+
+          <div id="reviewModePanel" class="review-mode-panel hidden">
+            <div class="review-mode-title">复习模式</div>
+
+            <div id="reviewProgressText" class="review-progress-text">
+              0 / 0
+            </div>
+
+            <div class="review-card">
+              <button
+                id="reviewCardWord"
+                type="button"
+                class="speak-word review-card-word"
+                data-word=""
+                title="点击朗读"
+              >
+                word
+              </button>
+
+              <div id="reviewCardLevel" class="review-card-level">
+                -
+              </div>
+
+              <div id="reviewCardMeaning" class="review-card-meaning hidden">
+                释义显示区
+              </div>
+            </div>
+
+            <div class="review-card-actions">
+              <button id="speakReviewWordBtn" class="secondary-btn">发音</button>
+              <button id="showReviewMeaningBtn" class="secondary-btn">显示释义</button>
+              <button id="reviewKnownBtn" class="secondary-btn">认识</button>
+              <button id="reviewUnknownBtn" class="secondary-btn">不认识</button>
+              <button id="exitReviewModeBtn" class="secondary-btn">退出复习</button>
+            </div>
+
+            <div id="reviewResultText" class="review-result-text">
+              本轮复习结果将在这里显示
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
+  <script src="dictionary.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
