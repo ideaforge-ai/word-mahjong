@@ -864,6 +864,55 @@ function moveHumanTileToEnd(fromIndex) {
   render();
 }
 
+function getDropTargetIndexByPosition(clientX, clientY) {
+  const handElement = elements.hand1;
+
+  if (!handElement) {
+    return null;
+  }
+
+  const handRect = handElement.getBoundingClientRect();
+
+  const insideHand =
+    clientX >= handRect.left &&
+    clientX <= handRect.right &&
+    clientY >= handRect.top &&
+    clientY <= handRect.bottom;
+
+  if (!insideHand) {
+    return null;
+  }
+
+  const tiles = Array.from(handElement.querySelectorAll(".tile"));
+
+  if (tiles.length === 0) {
+    return null;
+  }
+
+  let nearestIndex = null;
+  let nearestDistance = Infinity;
+
+  tiles.forEach((tile) => {
+    const rect = tile.getBoundingClientRect();
+    const tileCenterX = rect.left + rect.width / 2;
+    const distance = Math.abs(clientX - tileCenterX);
+
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      nearestIndex = Number(tile.dataset.index);
+    }
+  });
+
+  const lastTile = tiles[tiles.length - 1];
+  const lastRect = lastTile.getBoundingClientRect();
+
+  if (clientX > lastRect.right + 25) {
+    return "end";
+  }
+
+  return nearestIndex;
+}
+
 function endGame(message) {
   gameState.gameOver = true;
   setMessage(message);
@@ -2682,25 +2731,21 @@ function renderHands() {
             return;
           }
 
-          const targetElement = document.elementFromPoint(e.clientX, e.clientY);
-          const targetTile = targetElement
-            ? targetElement.closest(".human-hand .tile")
-            : null;
+          const targetIndex = getDropTargetIndexByPosition(
+            e.clientX,
+            e.clientY
+          );
 
-          if (targetTile && targetTile.dataset.index !== undefined) {
-            const targetIndex = Number(targetTile.dataset.index);
+          if (targetIndex === "end") {
+            moveHumanTileToEnd(draggedTileIndex);
+          } else if (targetIndex !== null) {
             moveHumanTile(draggedTileIndex, targetIndex);
           } else {
-            const targetHand = targetElement
-              ? targetElement.closest(".human-hand")
-              : null;
-
-            if (targetHand) {
-              moveHumanTileToEnd(draggedTileIndex);
-            } else {
-              draggedTileIndex = null;
-            }
+            draggedTileIndex = null;
           }
+
+isDragging = false;
+e.preventDefault();
 
           isDragging = false;
           e.preventDefault();
