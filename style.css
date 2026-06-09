@@ -1344,3 +1344,7 @@ button:disabled {
   opacity: 0.55;
   transform: scale(1.08);
 }
+.tile.locked {
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+}
