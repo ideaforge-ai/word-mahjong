@@ -1,13 +1,16 @@
 // Auto-generated level-fixed dictionary
-// Level policy v11:
-// basic        = 小学、初中核心词汇
-// intermediate = 高中词汇
-// advanced     = 四级词汇
-// academic     = 六级/学术常用词汇
+// Level policy v11.1 hotfix:
+// basic        = 小学、初中核心词汇；优先包含颜色、数字、问候、家庭、身体、动物、食物、学校、时间、天气、日常动作等基础主题词
+// intermediate = 高中词汇；常见但略抽象的阅读词
+// advanced     = 四级词汇；大学英语常见阅读词
+// academic     = 六级/学术常用词汇；NAWL/AWL及偏学术表达
 // challenge    = 雅思/GRE/低频难词
 //
+// Fix note:
+// v11 only used source/rank segmentation and could misclassify words like HI/YELLOW as advanced.
+// v11.1 adds a basic-topic whitelist before applying rank/source rules.
+//
 // This file keeps original meanings/ranks/sources and recalculates only `level`.
-// Original source file: a0287c5b-5efc-43aa-b327-e27f47628076.js
 
 const DICTIONARY = {
   THE: {
@@ -972,7 +975,7 @@ const DICTIONARY = {
   },
   INCLUDE: {
     meaning: "包括；把...算入；包住",
-    level: "basic",
+    level: "intermediate",
     rank: 163,
     source: "NGSL"
   },
@@ -1068,7 +1071,7 @@ const DICTIONARY = {
   },
   SYSTEM: {
     meaning: "系统；体系；制度",
-    level: "basic",
+    level: "intermediate",
     rank: 179,
     source: "NGSL"
   },
@@ -1224,7 +1227,7 @@ const DICTIONARY = {
   },
   PROVIDE: {
     meaning: "提供；供应；规定",
-    level: "basic",
+    level: "intermediate",
     rank: 205,
     source: "NGSL"
   },
@@ -1260,7 +1263,7 @@ const DICTIONARY = {
   },
   BUSINESS: {
     meaning: "生意；事情；业务",
-    level: "basic",
+    level: "intermediate",
     rank: 211,
     source: "NGSL"
   },
@@ -1272,7 +1275,7 @@ const DICTIONARY = {
   },
   INFORMATION: {
     meaning: "消息；知识；通知",
-    level: "basic",
+    level: "intermediate",
     rank: 213,
     source: "NGSL"
   },
@@ -1290,7 +1293,7 @@ const DICTIONARY = {
   },
   GOVERNMENT: {
     meaning: "政府；内阁；[经] 政府",
-    level: "basic",
+    level: "intermediate",
     rank: 216,
     source: "NGSL"
   },
@@ -1302,13 +1305,13 @@ const DICTIONARY = {
   },
   ISSUE: {
     meaning: "发行；问题；后果",
-    level: "basic",
+    level: "intermediate",
     rank: 218,
     source: "NGSL"
   },
   MARKET: {
     meaning: "市场；交易；集市",
-    level: "basic",
+    level: "intermediate",
     rank: 219,
     source: "NGSL"
   },
@@ -1332,7 +1335,7 @@ const DICTIONARY = {
   },
   SERVICE: {
     meaning: "服务；贡献；雇佣",
-    level: "basic",
+    level: "intermediate",
     rank: 223,
     source: "NGSL"
   },
@@ -1392,7 +1395,7 @@ const DICTIONARY = {
   },
   RESULT: {
     meaning: "结果；成绩；答案",
-    level: "basic",
+    level: "intermediate",
     rank: 233,
     source: "NGSL"
   },
@@ -1530,7 +1533,7 @@ const DICTIONARY = {
   },
   REASON: {
     meaning: "理由；原因；理智",
-    level: "basic",
+    level: "intermediate",
     rank: 256,
     source: "NGSL"
   },
@@ -1578,7 +1581,7 @@ const DICTIONARY = {
   },
   EXPERIENCE: {
     meaning: "经历；经验；体验",
-    level: "basic",
+    level: "intermediate",
     rank: 264,
     source: "NGSL"
   },
@@ -1626,7 +1629,7 @@ const DICTIONARY = {
   },
   SUPPORT: {
     meaning: "支持；支撑；援助",
-    level: "basic",
+    level: "intermediate",
     rank: 272,
     source: "NGSL"
   },
@@ -1674,7 +1677,7 @@ const DICTIONARY = {
   },
   TERM: {
     meaning: "术语；专有名词；期限",
-    level: "basic",
+    level: "intermediate",
     rank: 280,
     source: "NGSL"
   },
@@ -1710,13 +1713,13 @@ const DICTIONARY = {
   },
   PROCESS: {
     meaning: "程序；进行；过程",
-    level: "basic",
+    level: "intermediate",
     rank: 286,
     source: "NGSL"
   },
   PUBLIC: {
     meaning: "公众；民众；a. 公众的",
-    level: "basic",
+    level: "intermediate",
     rank: 287,
     source: "NGSL"
   },
@@ -1764,7 +1767,7 @@ const DICTIONARY = {
   },
   CONSIDER: {
     meaning: "考虑；思考；认为",
-    level: "basic",
+    level: "intermediate",
     rank: 295,
     source: "NGSL"
   },
@@ -1800,7 +1803,7 @@ const DICTIONARY = {
   },
   CONTROL: {
     meaning: "控制；管理；克制",
-    level: "basic",
+    level: "intermediate",
     rank: 301,
     source: "NGSL"
   },
@@ -1812,7 +1815,7 @@ const DICTIONARY = {
   },
   CONCERN: {
     meaning: "关心；忧虑；与...有关",
-    level: "basic",
+    level: "intermediate",
     rank: 303,
     source: "NGSL"
   },
@@ -1884,7 +1887,7 @@ const DICTIONARY = {
   },
   EFFECT: {
     meaning: "结果；影响；效果",
-    level: "basic",
+    level: "intermediate",
     rank: 315,
     source: "NGSL"
   },
@@ -1908,7 +1911,7 @@ const DICTIONARY = {
   },
   CAUSE: {
     meaning: "原因；目标；引起",
-    level: "basic",
+    level: "intermediate",
     rank: 319,
     source: "NGSL"
   },
@@ -2046,7 +2049,7 @@ const DICTIONARY = {
   },
   VALUE: {
     meaning: "价值；价格；购买力",
-    level: "basic",
+    level: "intermediate",
     rank: 342,
     source: "NGSL"
   },
@@ -2094,7 +2097,7 @@ const DICTIONARY = {
   },
   DEVELOP: {
     meaning: "发展；使发达；进步",
-    level: "basic",
+    level: "intermediate",
     rank: 350,
     source: "NGSL"
   },
@@ -2172,7 +2175,7 @@ const DICTIONARY = {
   },
   DEVELOPMENT: {
     meaning: "发展；[化] 展开",
-    level: "basic",
+    level: "intermediate",
     rank: 363,
     source: "NGSL"
   },
@@ -2280,7 +2283,7 @@ const DICTIONARY = {
   },
   SOCIAL: {
     meaning: "a. 社会的；群居的；社交的",
-    level: "basic",
+    level: "intermediate",
     rank: 381,
     source: "NGSL"
   },
@@ -2358,7 +2361,7 @@ const DICTIONARY = {
   },
   POLITICAL: {
     meaning: "a. 政治的；政治上的；政党的",
-    level: "basic",
+    level: "intermediate",
     rank: 394,
     source: "NGSL"
   },
@@ -2388,7 +2391,7 @@ const DICTIONARY = {
   },
   POLICY: {
     meaning: "政策；方针；策略",
-    level: "basic",
+    level: "intermediate",
     rank: 399,
     source: "NGSL"
   },
@@ -2406,7 +2409,7 @@ const DICTIONARY = {
   },
   REQUIRE: {
     meaning: "需要；命令；要求",
-    level: "basic",
+    level: "intermediate",
     rank: 402,
     source: "NGSL"
   },
@@ -2418,7 +2421,7 @@ const DICTIONARY = {
   },
   GENERAL: {
     meaning: "一般；将军；大体",
-    level: "basic",
+    level: "intermediate",
     rank: 404,
     source: "NGSL"
   },
@@ -2448,7 +2451,7 @@ const DICTIONARY = {
   },
   INDIVIDUAL: {
     meaning: "人；个人；个体",
-    level: "basic",
+    level: "intermediate",
     rank: 409,
     source: "NGSL"
   },
@@ -2532,7 +2535,7 @@ const DICTIONARY = {
   },
   RESEARCH: {
     meaning: "研究；调查；考察",
-    level: "basic",
+    level: "intermediate",
     rank: 423,
     source: "NGSL"
   },
@@ -2550,7 +2553,7 @@ const DICTIONARY = {
   },
   POSITION: {
     meaning: "位置；地位；身分",
-    level: "basic",
+    level: "intermediate",
     rank: 426,
     source: "NGSL"
   },
@@ -2574,7 +2577,7 @@ const DICTIONARY = {
   },
   SITUATION: {
     meaning: "情形；境遇；位置",
-    level: "basic",
+    level: "intermediate",
     rank: 430,
     source: "NGSL"
   },
@@ -2586,7 +2589,7 @@ const DICTIONARY = {
   },
   ACTIVITY: {
     meaning: "活动；行动；活跃",
-    level: "basic",
+    level: "intermediate",
     rank: 432,
     source: "NGSL"
   },
@@ -2952,7 +2955,7 @@ const DICTIONARY = {
   },
   ECONOMIC: {
     meaning: "a. 经济上的；实用的；节省的",
-    level: "basic",
+    level: "intermediate",
     rank: 493,
     source: "NGSL"
   },
@@ -4188,7 +4191,7 @@ const DICTIONARY = {
   },
   ECONOMY: {
     meaning: "经济；理财；节约",
-    level: "basic",
+    level: "intermediate",
     rank: 699,
     source: "NGSL+GRE_MASTER"
   },
@@ -4800,2407 +4803,2407 @@ const DICTIONARY = {
   },
   HUSBAND: {
     meaning: "丈夫；管理人；节俭的人",
-    level: "intermediate",
+    level: "basic",
     rank: 801,
     source: "NGSL+GRE_MASTER"
   },
   ACCESS: {
     meaning: "通路；入口；接近",
-    level: "intermediate",
+    level: "basic",
     rank: 802,
     source: "NGSL"
   },
   MOVEMENT: {
     meaning: "运动；动作；运转",
-    level: "intermediate",
+    level: "basic",
     rank: 803,
     source: "NGSL"
   },
   TREAT: {
     meaning: "宴请；款待；视为",
-    level: "intermediate",
+    level: "basic",
     rank: 804,
     source: "NGSL"
   },
   IDENTIFY: {
     meaning: "识别；认为...等同于；确定",
-    level: "intermediate",
+    level: "basic",
     rank: 805,
     source: "NGSL"
   },
   LOSS: {
     meaning: "损失；遗失；失败",
-    level: "intermediate",
+    level: "basic",
     rank: 806,
     source: "NGSL"
   },
   SHALL: {
     meaning: "\"\" since a promise or threat and an authoritative prophecy；nearly coincide in significance. In shall with the first person",
-    level: "intermediate",
+    level: "basic",
     rank: 807,
     source: "NGSL"
   },
   MODERN: {
     meaning: "现代人；有思想的人；a. 现代的",
-    level: "intermediate",
+    level: "basic",
     rank: 808,
     source: "NGSL"
   },
   PRESSURE: {
     meaning: "压；榨；按",
-    level: "intermediate",
+    level: "basic",
     rank: 809,
     source: "NGSL"
   },
   BUS: {
     meaning: "公共汽车；[计] 总线；汇流条",
-    level: "intermediate",
+    level: "basic",
     rank: 810,
     source: "NGSL"
   },
   TREATMENT: {
     meaning: "治疗；待遇；处理",
-    level: "intermediate",
+    level: "basic",
     rank: 811,
     source: "NGSL"
   },
   CONFERENCE: {
     meaning: "会议；[经] 会议；讨论会",
-    level: "intermediate",
+    level: "basic",
     rank: 812,
     source: "NGSL"
   },
   YOURSELF: {
     meaning: "你自己",
-    level: "intermediate",
+    level: "basic",
     rank: 813,
     source: "NGSL"
   },
   SUPPLY: {
     meaning: "补给；供给；供应品",
-    level: "intermediate",
+    level: "basic",
     rank: 814,
     source: "NGSL"
   },
   VILLAGE: {
     meaning: "村庄；a. 乡村的；村庄的",
-    level: "intermediate",
+    level: "basic",
     rank: 815,
     source: "NGSL"
   },
   WORTH: {
     meaning: "价值；财产；a. 值...的",
-    level: "intermediate",
+    level: "basic",
     rank: 816,
     source: "NGSL"
   },
   NATURAL: {
     meaning: "白痴；a. 自然的；自然界的",
-    level: "intermediate",
+    level: "basic",
     rank: 817,
     source: "NGSL"
   },
   EXPRESS: {
     meaning: "快车；快递；专使",
-    level: "intermediate",
+    level: "basic",
     rank: 818,
     source: "NGSL"
   },
   INDICATE: {
     meaning: "显示；象征；指示",
-    level: "intermediate",
+    level: "basic",
     rank: 819,
     source: "NGSL"
   },
   ATTEND: {
     meaning: "参加；照料；伴随",
-    level: "intermediate",
+    level: "basic",
     rank: 820,
     source: "NGSL"
   },
   BROTHER: {
     meaning: "兄弟",
-    level: "intermediate",
+    level: "basic",
     rank: 821,
     source: "NGSL"
   },
   INVESTMENT: {
     meaning: "投资；[医] 包埋料；围模料",
-    level: "intermediate",
+    level: "basic",
     rank: 822,
     source: "NGSL"
   },
   SCORE: {
     meaning: "得分；抓痕；二十个",
-    level: "intermediate",
+    level: "basic",
     rank: 823,
     source: "NGSL+GRE_MASTER"
   },
   ORGANIZE: {
     meaning: "组织；有机化；给予生机",
-    level: "intermediate",
+    level: "basic",
     rank: 824,
     source: "NGSL"
   },
   TRIP: {
     meaning: "旅行；绊倒；摔倒",
-    level: "intermediate",
+    level: "basic",
     rank: 825,
     source: "NGSL"
   },
   BEYOND: {
     meaning: "超过；在那一边；迟于",
-    level: "intermediate",
+    level: "basic",
     rank: 826,
     source: "NGSL"
   },
   SLEEP: {
     meaning: "睡眠；静止；昏迷",
-    level: "intermediate",
+    level: "basic",
     rank: 827,
     source: "NGSL"
   },
   FISH: {
     meaning: "鱼；鱼肉；鱼类",
-    level: "intermediate",
+    level: "basic",
     rank: 828,
     source: "NGSL"
   },
   PROMISE: {
     meaning: "诺言；约定的事情；有指望",
-    level: "intermediate",
+    level: "basic",
     rank: 829,
     source: "NGSL"
   },
   POTENTIAL: {
     meaning: "潜在性；可能性；潜力",
-    level: "intermediate",
+    level: "basic",
     rank: 830,
     source: "NGSL"
   },
   ENERGY: {
     meaning: "精力；精神；活力",
-    level: "intermediate",
+    level: "basic",
     rank: 831,
     source: "NGSL"
   },
   TROUBLE: {
     meaning: "烦恼；麻烦；困难",
-    level: "intermediate",
+    level: "basic",
     rank: 832,
     source: "NGSL"
   },
   RELATION: {
     meaning: "关系；联系；叙述",
-    level: "intermediate",
+    level: "basic",
     rank: 833,
     source: "NGSL"
   },
   TOUCH: {
     meaning: "触觉；碰；触",
-    level: "intermediate",
+    level: "basic",
     rank: 834,
     source: "NGSL"
   },
   FILE: {
     meaning: "档案；公文箱；文件夹",
-    level: "intermediate",
+    level: "basic",
     rank: 835,
     source: "NGSL"
   },
   MIDDLE: {
     meaning: "中央；中间；腰部",
-    level: "intermediate",
+    level: "basic",
     rank: 836,
     source: "NGSL"
   },
   BAR: {
     meaning: "条；棒；酒吧",
-    level: "intermediate",
+    level: "basic",
     rank: 837,
     source: "NGSL"
   },
   SUFFER: {
     meaning: "遭受；经历；忍受",
-    level: "intermediate",
+    level: "basic",
     rank: 838,
     source: "NGSL"
   },
   STRATEGY: {
     meaning: "战略；策略；[经] 战略",
-    level: "intermediate",
+    level: "basic",
     rank: 839,
     source: "NGSL"
   },
   DEEP: {
     meaning: "a. 深的；深入地；深渊",
-    level: "intermediate",
+    level: "basic",
     rank: 840,
     source: "NGSL"
   },
   EXCEPT: {
     meaning: "除；除外；反对",
-    level: "intermediate",
+    level: "basic",
     rank: 841,
     source: "NGSL+GRE_MASTER"
   },
   CLEAN: {
     meaning: "a. 干净的；清白的；简洁的",
-    level: "intermediate",
+    level: "basic",
     rank: 842,
     source: "NGSL"
   },
   TEND: {
     meaning: "走向；有某种的倾向；易于",
-    level: "intermediate",
+    level: "basic",
     rank: 843,
     source: "NGSL+GRE_MASTER"
   },
   ADVANCE: {
     meaning: "前进；进展；行过的路程",
-    level: "intermediate",
+    level: "basic",
     rank: 844,
     source: "NGSL"
   },
   FILL: {
     meaning: "装满；填充；弥漫",
-    level: "intermediate",
+    level: "basic",
     rank: 845,
     source: "NGSL"
   },
   STAR: {
     meaning: "星；恒星；星形物",
-    level: "intermediate",
+    level: "basic",
     rank: 846,
     source: "NGSL"
   },
   NETWORK: {
     meaning: "网络；广播网；网状物",
-    level: "intermediate",
+    level: "basic",
     rank: 847,
     source: "NGSL"
   },
   GENERALLY: {
     meaning: "通常；逐渐地；普遍地",
-    level: "intermediate",
+    level: "basic",
     rank: 848,
     source: "NGSL"
   },
   OPERATION: {
     meaning: "操作；动作；手术",
-    level: "intermediate",
+    level: "basic",
     rank: 849,
     source: "NGSL"
   },
   MATCH: {
     meaning: "比赛；火柴；对手",
-    level: "intermediate",
+    level: "basic",
     rank: 850,
     source: "NGSL"
   },
   AVOID: {
     meaning: "避免；防止；撤消",
-    level: "intermediate",
+    level: "basic",
     rank: 851,
     source: "NGSL"
   },
   SEAT: {
     meaning: "座；座位；位子",
-    level: "intermediate",
+    level: "basic",
     rank: 852,
     source: "NGSL"
   },
   THROW: {
     meaning: "投；掷；抛",
-    level: "intermediate",
+    level: "basic",
     rank: 853,
     source: "NGSL"
   },
   TASK: {
     meaning: "工作；任务；作业",
-    level: "intermediate",
+    level: "basic",
     rank: 854,
     source: "NGSL"
   },
   NORMAL: {
     meaning: "常态；标准；正常",
-    level: "intermediate",
+    level: "basic",
     rank: 855,
     source: "NGSL"
   },
   GOAL: {
     meaning: "目标；终点；得分",
-    level: "intermediate",
+    level: "basic",
     rank: 856,
     source: "NGSL"
   },
   ASSOCIATE: {
     meaning: "同伴；伙伴；关联的事物",
-    level: "intermediate",
+    level: "basic",
     rank: 857,
     source: "NGSL"
   },
   BLUE: {
     meaning: "蓝色；a. 蓝色的；下流的",
-    level: "intermediate",
+    level: "basic",
     rank: 858,
     source: "NGSL+GRE_MASTER"
   },
   POSITIVE: {
     meaning: "a. 肯定的；积极的；有把握的",
-    level: "intermediate",
+    level: "basic",
     rank: 859,
     source: "NGSL"
   },
   OPTION: {
     meaning: "选择权；挑选；选项",
-    level: "intermediate",
+    level: "basic",
     rank: 860,
     source: "NGSL"
   },
   BOX: {
     meaning: "盒子；箱；方框",
-    level: "intermediate",
+    level: "basic",
     rank: 861,
     source: "NGSL"
   },
   HUGE: {
     meaning: "a. 极大的；巨大的；无限的",
-    level: "intermediate",
+    level: "basic",
     rank: 862,
     source: "NGSL"
   },
   MESSAGE: {
     meaning: "消息；通讯；讯息",
-    level: "intermediate",
+    level: "basic",
     rank: 863,
     source: "NGSL"
   },
   INSTANCE: {
     meaning: "建议；情况；例子",
-    level: "intermediate",
+    level: "basic",
     rank: 864,
     source: "NGSL"
   },
   STYLE: {
     meaning: "风格；时尚；文体",
-    level: "intermediate",
+    level: "basic",
     rank: 865,
     source: "NGSL"
   },
   REFER: {
     meaning: "提交；归诸于；把...提交",
-    level: "intermediate",
+    level: "basic",
     rank: 866,
     source: "NGSL"
   },
   COLD: {
     meaning: "感冒；寒冷；a. 寒冷的",
-    level: "intermediate",
+    level: "basic",
     rank: 867,
     source: "NGSL"
   },
   PUSH: {
     meaning: "推；推动；奋斗",
-    level: "intermediate",
+    level: "basic",
     rank: 868,
     source: "NGSL"
   },
   QUARTER: {
     meaning: "四分之一；一刻钟；季度",
-    level: "intermediate",
+    level: "basic",
     rank: 869,
     source: "NGSL"
   },
   ASSUME: {
     meaning: "假定；承担；呈现",
-    level: "intermediate",
+    level: "basic",
     rank: 870,
     source: "NGSL"
   },
   BABY: {
     meaning: "婴孩；[医] 婴儿",
-    level: "intermediate",
+    level: "basic",
     rank: 871,
     source: "NGSL"
   },
   SUCCESSFUL: {
     meaning: "a. 成功的；一帆风顺的；顺利的",
-    level: "intermediate",
+    level: "basic",
     rank: 872,
     source: "NGSL"
   },
   SING: {
     meaning: "唱；唱歌；演唱",
-    level: "intermediate",
+    level: "basic",
     rank: 873,
     source: "NGSL"
   },
   DOUBT: {
     meaning: "怀疑；疑惑；怀疑",
-    level: "intermediate",
+    level: "basic",
     rank: 874,
     source: "NGSL"
   },
   COMPETITION: {
     meaning: "竞争；竞赛；[经] 竞争",
-    level: "intermediate",
+    level: "basic",
     rank: 875,
     source: "NGSL"
   },
   THEORY: {
     meaning: "理论；学说；原理",
-    level: "intermediate",
+    level: "basic",
     rank: 876,
     source: "NGSL"
   },
   PROPOSE: {
     meaning: "计划；打算；建议",
-    level: "intermediate",
+    level: "basic",
     rank: 877,
     source: "NGSL"
   },
   REFERENCE: {
     meaning: "参考；索引；参照",
-    level: "intermediate",
+    level: "basic",
     rank: 878,
     source: "NGSL"
   },
   ARGUMENT: {
     meaning: "争论；论证；论据",
-    level: "intermediate",
+    level: "basic",
     rank: 879,
     source: "NGSL"
   },
   ADULT: {
     meaning: "成人；成虫；a. 成年的",
-    level: "intermediate",
+    level: "basic",
     rank: 880,
     source: "NGSL"
   },
   FLY: {
     meaning: "苍蝇；两翼昆虫；飞行",
-    level: "intermediate",
+    level: "basic",
     rank: 881,
     source: "NGSL"
   },
   DOCUMENT: {
     meaning: "文件；公文；文档",
-    level: "intermediate",
+    level: "basic",
     rank: 882,
     source: "NGSL"
   },
   PATTERN: {
     meaning: "模范；典型；式样",
-    level: "intermediate",
+    level: "basic",
     rank: 883,
     source: "NGSL"
   },
   APPLICATION: {
     meaning: "应用；申请；志愿书",
-    level: "intermediate",
+    level: "basic",
     rank: 884,
     source: "NGSL"
   },
   HOT: {
     meaning: "a. 热的；热心的；辣的",
-    level: "intermediate",
+    level: "basic",
     rank: 885,
     source: "NGSL"
   },
   OBVIOUSLY: {
     meaning: "显而易见地；明显地",
-    level: "intermediate",
+    level: "basic",
     rank: 886,
     source: "NGSL"
   },
   UNCLEAR: {
     meaning: "a. 不易了解的；不清楚的；含混的",
-    level: "intermediate",
+    level: "basic",
     rank: 887,
     source: "NGSL"
   },
   BILL: {
     meaning: "帐单；清单；钞票",
-    level: "intermediate",
+    level: "basic",
     rank: 888,
     source: "NGSL"
   },
   SEARCH: {
     meaning: "搜寻；查究；搜寻",
-    level: "intermediate",
+    level: "basic",
     rank: 889,
     source: "NGSL"
   },
   SEPARATE: {
     meaning: "独立件；抽印本；a. 分开的",
-    level: "intermediate",
+    level: "basic",
     rank: 890,
     source: "NGSL"
   },
   CENTRAL: {
     meaning: "a. 中央的；重要的；[医] 中央的",
-    level: "intermediate",
+    level: "basic",
     rank: 891,
     source: "NGSL"
   },
   CAREER: {
     meaning: "事业；生涯；成功",
-    level: "intermediate",
+    level: "basic",
     rank: 892,
     source: "NGSL+GRE_MASTER"
   },
   ANYWAY: {
     meaning: "it's gone\"\"；in any case",
-    level: "intermediate",
+    level: "basic",
     rank: 893,
     source: "NGSL"
   },
   SPEECH: {
     meaning: "演讲；说话；谈话",
-    level: "intermediate",
+    level: "basic",
     rank: 894,
     source: "NGSL"
   },
   DOG: {
     meaning: "狗；坏蛋；跟踪",
-    level: "intermediate",
+    level: "basic",
     rank: 895,
     source: "NGSL"
   },
   OFFICER: {
     meaning: "军官；主管；官员",
-    level: "intermediate",
+    level: "basic",
     rank: 896,
     source: "NGSL"
   },
   THROUGHOUT: {
     meaning: "到处；贯穿全部地；自始至终",
-    level: "intermediate",
+    level: "basic",
     rank: 897,
     source: "NGSL"
   },
   OIL: {
     meaning: "油；石油；油画颜料",
-    level: "intermediate",
+    level: "basic",
     rank: 898,
     source: "NGSL"
   },
   DRESS: {
     meaning: "服装；覆盖物；穿着",
-    level: "intermediate",
+    level: "basic",
     rank: 899,
     source: "NGSL"
   },
   PROFIT: {
     meaning: "利润；赢利；利益",
-    level: "intermediate",
+    level: "basic",
     rank: 900,
     source: "NGSL"
   },
   GUESS: {
     meaning: "猜测；臆测；猜测",
-    level: "intermediate",
+    level: "basic",
     rank: 901,
     source: "NGSL"
   },
   FUN: {
     meaning: "乐趣；玩笑；娱乐",
-    level: "intermediate",
+    level: "basic",
     rank: 902,
     source: "NGSL"
   },
   PROTECT: {
     meaning: "防卫；保护；警戒",
-    level: "intermediate",
+    level: "basic",
     rank: 903,
     source: "NGSL"
   },
   RESOURCE: {
     meaning: "资源；财力；办法",
-    level: "intermediate",
+    level: "basic",
     rank: 904,
     source: "NGSL"
   },
   SCIENCE: {
     meaning: "科学；学科；学问",
-    level: "intermediate",
+    level: "basic",
     rank: 905,
     source: "NGSL"
   },
   DISEASE: {
     meaning: "疾病；弊病；[医] [疾]病",
-    level: "intermediate",
+    level: "basic",
     rank: 906,
     source: "NGSL"
   },
   BALANCE: {
     meaning: "平衡；差额；平衡",
-    level: "intermediate",
+    level: "basic",
     rank: 907,
     source: "NGSL"
   },
   DAMAGE: {
     meaning: "损害；伤害；损害",
-    level: "intermediate",
+    level: "basic",
     rank: 908,
     source: "NGSL"
   },
   BASIS: {
     meaning: "基础；主要成分；[化] 基底",
-    level: "intermediate",
+    level: "basic",
     rank: 909,
     source: "NGSL"
   },
   AUTHOR: {
     meaning: "作家；作家的著作；创始人",
-    level: "intermediate",
+    level: "basic",
     rank: 910,
     source: "NGSL"
   },
   BASIC: {
     meaning: "基本原理；要素；基本规律",
-    level: "intermediate",
+    level: "basic",
     rank: 911,
     source: "NGSL"
   },
   ENCOURAGE: {
     meaning: "鼓励；支持；激励",
-    level: "intermediate",
+    level: "basic",
     rank: 912,
     source: "NGSL"
   },
   HAIR: {
     meaning: "头发；毛发；些微",
-    level: "intermediate",
+    level: "basic",
     rank: 913,
     source: "NGSL"
   },
   MALE: {
     meaning: "男人；雄性动物；a. 男性的",
-    level: "intermediate",
+    level: "basic",
     rank: 914,
     source: "NGSL"
   },
   OPERATE: {
     meaning: "操作；运转；动手术",
-    level: "intermediate",
+    level: "basic",
     rank: 915,
     source: "NGSL"
   },
   REFLECT: {
     meaning: "反射；反映；招致",
-    level: "intermediate",
+    level: "basic",
     rank: 916,
     source: "NGSL"
   },
   EXERCISE: {
     meaning: "行使；执行；运动",
-    level: "intermediate",
+    level: "basic",
     rank: 917,
     source: "NGSL"
   },
   USEFUL: {
     meaning: "a. 有用的；有益的；[机] 有用的",
-    level: "intermediate",
+    level: "basic",
     rank: 918,
     source: "NGSL"
   },
   RESTAURANT: {
     meaning: "餐馆；饭店",
-    level: "intermediate",
+    level: "basic",
     rank: 919,
     source: "NGSL"
   },
   INCOME: {
     meaning: "收入；收益；流入",
-    level: "intermediate",
+    level: "basic",
     rank: 920,
     source: "NGSL"
   },
   PROPERTY: {
     meaning: "财产；所有权；性质",
-    level: "intermediate",
+    level: "basic",
     rank: 921,
     source: "NGSL"
   },
   PREVIOUS: {
     meaning: "a. 早先的；前面的；过急的",
-    level: "intermediate",
+    level: "basic",
     rank: 922,
     source: "NGSL"
   },
   DARK: {
     meaning: "黑暗；夜；黄昏",
-    level: "intermediate",
+    level: "basic",
     rank: 923,
     source: "NGSL"
   },
   IMAGINE: {
     meaning: "想像；设想；猜测",
-    level: "intermediate",
+    level: "basic",
     rank: 924,
     source: "NGSL"
   },
   OKAY: {
     meaning: "a. 好；可以；行",
-    level: "intermediate",
+    level: "basic",
     rank: 925,
     source: "NGSL"
   },
   EARN: {
     meaning: "赚得；获得；博得",
-    level: "intermediate",
+    level: "basic",
     rank: 926,
     source: "NGSL+GRE_MASTER"
   },
   DAUGHTER: {
     meaning: "女儿；a. 女儿的",
-    level: "intermediate",
+    level: "basic",
     rank: 927,
     source: "NGSL"
   },
   POST: {
     meaning: "柱；杆；准星",
-    level: "intermediate",
+    level: "basic",
     rank: 928,
     source: "NGSL"
   },
   NEWSPAPER: {
     meaning: "报纸",
-    level: "intermediate",
+    level: "basic",
     rank: 929,
     source: "NGSL"
   },
   DEFINE: {
     meaning: "定义；规定；使明确",
-    level: "intermediate",
+    level: "basic",
     rank: 930,
     source: "NGSL"
   },
   CONCLUSION: {
     meaning: "结论；结尾；推论",
-    level: "intermediate",
+    level: "basic",
     rank: 931,
     source: "NGSL"
   },
   CLOCK: {
     meaning: "时钟；计时器；(袜子上的)绣花边花",
-    level: "intermediate",
+    level: "basic",
     rank: 932,
     source: "NGSL"
   },
   EVERYBODY: {
     meaning: "每个人；人人",
-    level: "intermediate",
+    level: "basic",
     rank: 933,
     source: "NGSL"
   },
   WEEKEND: {
     meaning: "周末；周末休假",
-    level: "intermediate",
+    level: "basic",
     rank: 934,
     source: "NGSL"
   },
   PERFORM: {
     meaning: "进行；履行；完成",
-    level: "intermediate",
+    level: "basic",
     rank: 935,
     source: "NGSL"
   },
   PROFESSIONAL: {
     meaning: "专业人才；a. 专业的；职业的",
-    level: "intermediate",
+    level: "basic",
     rank: 936,
     source: "NGSL"
   },
   MINE: {
     meaning: "矿；矿藏；地雷",
-    level: "intermediate",
+    level: "basic",
     rank: 937,
     source: "NGSL"
   },
   DEBATE: {
     meaning: "辩论；讨论；争论",
-    level: "intermediate",
+    level: "basic",
     rank: 938,
     source: "NGSL"
   },
   MEMORY: {
     meaning: "记忆；记忆力；回忆",
-    level: "intermediate",
+    level: "basic",
     rank: 939,
     source: "NGSL"
   },
   GREEN: {
     meaning: "绿色；绿色颜料；a. 绿色的",
-    level: "intermediate",
+    level: "basic",
     rank: 940,
     source: "NGSL"
   },
   SONG: {
     meaning: "歌；曲；鸣声",
-    level: "intermediate",
+    level: "basic",
     rank: 941,
     source: "NGSL"
   },
   OBJECT: {
     meaning: "物体；目标；目的",
-    level: "intermediate",
+    level: "basic",
     rank: 942,
     source: "NGSL"
   },
   MAINTAIN: {
     meaning: "维持；维修；保持",
-    level: "intermediate",
+    level: "basic",
     rank: 943,
     source: "NGSL"
   },
   CREDIT: {
     meaning: "信用；信任；荣誉",
-    level: "intermediate",
+    level: "basic",
     rank: 944,
     source: "NGSL"
   },
   RING: {
     meaning: "环；环形物；拳击场",
-    level: "intermediate",
+    level: "basic",
     rank: 945,
     source: "NGSL"
   },
   DISCOVER: {
     meaning: "发现；找到；暴露",
-    level: "intermediate",
+    level: "basic",
     rank: 946,
     source: "NGSL"
   },
   DEAD: {
     meaning: "a. 死的；不活泼的；麻木的",
-    level: "intermediate",
+    level: "basic",
     rank: 947,
     source: "NGSL"
   },
   AFTERNOON: {
     meaning: "午后；下午",
-    level: "intermediate",
+    level: "basic",
     rank: 948,
     source: "NGSL"
   },
   PREFER: {
     meaning: "宁可；较喜欢；提出",
-    level: "intermediate",
+    level: "basic",
     rank: 949,
     source: "NGSL"
   },
   EXTEND: {
     meaning: "扩充；延伸；伸展",
-    level: "intermediate",
+    level: "basic",
     rank: 950,
     source: "NGSL"
   },
   POSSIBILITY: {
     meaning: "可能性；可能的事；[法] 可能性",
-    level: "intermediate",
+    level: "basic",
     rank: 951,
     source: "NGSL"
   },
   DIRECTION: {
     meaning: "方向；指导；趋势",
-    level: "intermediate",
+    level: "basic",
     rank: 952,
     source: "NGSL"
   },
   FACILITY: {
     meaning: "容易；灵巧；设备",
-    level: "intermediate",
+    level: "basic",
     rank: 953,
     source: "NGSL"
   },
   VARIETY: {
     meaning: "多样；种类；变种",
-    level: "intermediate",
+    level: "basic",
     rank: 954,
     source: "NGSL"
   },
   DAILY: {
     meaning: "a. 每日的；日常的；每日地",
-    level: "intermediate",
+    level: "basic",
     rank: 955,
     source: "NGSL"
   },
   CLOTHES: {
     meaning: "衣服",
-    level: "intermediate",
+    level: "basic",
     rank: 956,
     source: "NGSL"
   },
   SCREEN: {
     meaning: "幕；银幕；屏风",
-    level: "intermediate",
+    level: "basic",
     rank: 957,
     source: "NGSL"
   },
   TRACK: {
     meaning: "轨迹；足迹；径迹",
-    level: "intermediate",
+    level: "basic",
     rank: 958,
     source: "NGSL"
   },
   DANCE: {
     meaning: "跳舞；舞蹈；舞会",
-    level: "intermediate",
+    level: "basic",
     rank: 959,
     source: "NGSL"
   },
   COMPLETELY: {
     meaning: "完全地；十分地；圆满地",
-    level: "intermediate",
+    level: "basic",
     rank: 960,
     source: "NGSL"
   },
   FEMALE: {
     meaning: "女性；女人；雌性动物",
-    level: "intermediate",
+    level: "basic",
     rank: 961,
     source: "NGSL"
   },
   RESPONSIBILITY: {
     meaning: "责任；职责；负担",
-    level: "intermediate",
+    level: "basic",
     rank: 962,
     source: "NGSL"
   },
   ORIGINAL: {
     meaning: "a. 最初的；原始的；有创意的",
-    level: "intermediate",
+    level: "basic",
     rank: 963,
     source: "NGSL"
   },
   SISTER: {
     meaning: "姐妹；姐；妹",
-    level: "intermediate",
+    level: "basic",
     rank: 964,
     source: "NGSL"
   },
   ROCK: {
     meaning: "岩石；岩礁；石头",
-    level: "intermediate",
+    level: "basic",
     rank: 965,
     source: "NGSL"
   },
   DREAM: {
     meaning: "梦；空想；愿望",
-    level: "intermediate",
+    level: "basic",
     rank: 966,
     source: "NGSL"
   },
   NOR: {
     meaning: "也不；也没有；[计] 或非",
-    level: "intermediate",
+    level: "basic",
     rank: 967,
     source: "NGSL"
   },
   UNIVERSITY: {
     meaning: "大学",
-    level: "intermediate",
+    level: "basic",
     rank: 968,
     source: "NGSL"
   },
   EASILY: {
     meaning: "容易地；轻易地；流利地",
-    level: "intermediate",
+    level: "basic",
     rank: 969,
     source: "NGSL"
   },
   AGENCY: {
     meaning: "代理机构；经销商；中介",
-    level: "intermediate",
+    level: "basic",
     rank: 970,
     source: "NGSL"
   },
   DOLLAR: {
     meaning: "美元；元(加；澳等国货币单位)",
-    level: "intermediate",
+    level: "basic",
     rank: 971,
     source: "NGSL"
   },
   GARDEN: {
     meaning: "花园；果园；菜园",
-    level: "intermediate",
+    level: "basic",
     rank: 972,
     source: "NGSL"
   },
   FIX: {
     meaning: "使固定；修理；准备",
-    level: "intermediate",
+    level: "basic",
     rank: 973,
     source: "NGSL"
   },
   AHEAD: {
     meaning: "a. 领先的；预先的；向前的",
-    level: "intermediate",
+    level: "basic",
     rank: 974,
     source: "NGSL"
   },
   CROSS: {
     meaning: "十字架；十字架形物件；交叉",
-    level: "intermediate",
+    level: "basic",
     rank: 975,
     source: "NGSL+GRE_MASTER"
   },
   YEAH: {
     meaning: "(非正式)是；是的",
-    level: "intermediate",
+    level: "basic",
     rank: 976,
     source: "NGSL"
   },
   CANDIDATE: {
     meaning: "候选人；投考者；[法] 候选",
-    level: "intermediate",
+    level: "basic",
     rank: 977,
     source: "NGSL"
   },
   WEIGHT: {
     meaning: "重；重量；体重",
-    level: "intermediate",
+    level: "basic",
     rank: 978,
     source: "NGSL"
   },
   LEGAL: {
     meaning: "a. 法律的；法定的；合法的",
-    level: "intermediate",
+    level: "basic",
     rank: 979,
     source: "NGSL"
   },
   PROPOSAL: {
     meaning: "提议；计划；求婚",
-    level: "intermediate",
+    level: "basic",
     rank: 980,
     source: "NGSL"
   },
   VERSION: {
     meaning: "一种描述；版本；译文",
-    level: "intermediate",
+    level: "basic",
     rank: 981,
     source: "NGSL"
   },
   CONVERSATION: {
     meaning: "会话；说话；交谈",
-    level: "intermediate",
+    level: "basic",
     rank: 982,
     source: "NGSL"
   },
   SOMEBODY: {
     meaning: "了不起的人；大人物；有人",
-    level: "intermediate",
+    level: "basic",
     rank: 983,
     source: "NGSL"
   },
   POUND: {
     meaning: "磅；英镑；重击",
-    level: "intermediate",
+    level: "basic",
     rank: 984,
     source: "NGSL"
   },
   MAGAZINE: {
     meaning: "杂志；仓库；弹盒",
-    level: "intermediate",
+    level: "basic",
     rank: 985,
     source: "NGSL"
   },
   SHAPE: {
     meaning: "形状；形态；外形",
-    level: "intermediate",
+    level: "basic",
     rank: 986,
     source: "NGSL"
   },
   SEA: {
     meaning: "海；海洋；海浪",
-    level: "intermediate",
+    level: "basic",
     rank: 987,
     source: "NGSL"
   },
   IMMEDIATELY: {
     meaning: "直接地；立刻；立即",
-    level: "intermediate",
+    level: "basic",
     rank: 988,
     source: "NGSL"
   },
   WELCOME: {
     meaning: "欢迎；欢迎词；a. 受欢迎的",
-    level: "intermediate",
+    level: "basic",
     rank: 989,
     source: "NGSL"
   },
   SMILE: {
     meaning: "微笑；喜色；笑容",
-    level: "intermediate",
+    level: "basic",
     rank: 990,
     source: "NGSL"
   },
   COMMUNICATION: {
     meaning: "交流；交通；通讯",
-    level: "intermediate",
+    level: "basic",
     rank: 991,
     source: "NGSL"
   },
   AGENT: {
     meaning: "代理商；政府代表；动原",
-    level: "intermediate",
+    level: "basic",
     rank: 992,
     source: "NGSL"
   },
   TRADITIONAL: {
     meaning: "a. 传统的；惯例的；[经] 传统的",
-    level: "intermediate",
+    level: "basic",
     rank: 993,
     source: "NGSL"
   },
   REPLACE: {
     meaning: "代替；替换；放回",
-    level: "intermediate",
+    level: "basic",
     rank: 994,
     source: "NGSL"
   },
   JUDGE: {
     meaning: "法官；裁判员；审判官",
-    level: "intermediate",
+    level: "basic",
     rank: 995,
     source: "NGSL"
   },
   HERSELF: {
     meaning: "她自己；她亲自",
-    level: "intermediate",
+    level: "basic",
     rank: 996,
     source: "NGSL"
   },
   SUDDENLY: {
     meaning: "突然；意外；忽然",
-    level: "intermediate",
+    level: "basic",
     rank: 997,
     source: "NGSL"
   },
   GENERATION: {
     meaning: "一代；一世；产生",
-    level: "intermediate",
+    level: "basic",
     rank: 998,
     source: "NGSL"
   },
   ESTIMATE: {
     meaning: "估计；判断；估计",
-    level: "intermediate",
+    level: "basic",
     rank: 999,
     source: "NGSL"
   },
   FAVORITE: {
     meaning: "喜欢的事物；幸运儿；a. 特别受喜爱的",
-    level: "intermediate",
+    level: "basic",
     rank: 1000,
     source: "NGSL"
   },
   DIFFICULTY: {
     meaning: "困难；难点",
-    level: "intermediate",
+    level: "basic",
     rank: 1001,
     source: "NGSL"
   },
   PURCHASE: {
     meaning: "购买；购买品；紧握",
-    level: "intermediate",
+    level: "basic",
     rank: 1002,
     source: "NGSL"
   },
   SHOOT: {
     meaning: "射击；狩猎；芽",
-    level: "intermediate",
+    level: "basic",
     rank: 1003,
     source: "NGSL+GRE_MASTER"
   },
   ANNOUNCE: {
     meaning: "宣布；声称；显示",
-    level: "intermediate",
+    level: "basic",
     rank: 1004,
     source: "NGSL"
   },
   UNLESS: {
     meaning: "除非；除...之外",
-    level: "intermediate",
+    level: "basic",
     rank: 1005,
     source: "NGSL"
   },
   INDEPENDENT: {
     meaning: "独立自主者；无党派者；a. 独立的",
-    level: "intermediate",
+    level: "basic",
     rank: 1006,
     source: "NGSL"
   },
   RECOMMEND: {
     meaning: "推荐；介绍；劝告",
-    level: "intermediate",
+    level: "basic",
     rank: 1007,
     source: "NGSL"
   },
   SURVEY: {
     meaning: "纵览；视察；测量",
-    level: "intermediate",
+    level: "basic",
     rank: 1008,
     source: "NGSL"
   },
   MAJORITY: {
     meaning: "多数；大半；[计] 多数逻辑",
-    level: "intermediate",
+    level: "basic",
     rank: 1009,
     source: "NGSL"
   },
   STICK: {
     meaning: "棍；棒；刺",
-    level: "intermediate",
+    level: "basic",
     rank: 1010,
     source: "NGSL"
   },
   REQUEST: {
     meaning: "请求；需要；申请书",
-    level: "intermediate",
+    level: "basic",
     rank: 1011,
     source: "NGSL"
   },
   RICH: {
     meaning: "a. 富裕的；富饶的；浓厚的",
-    level: "intermediate",
+    level: "basic",
     rank: 1012,
     source: "NGSL"
   },
   WIND: {
     meaning: "风；气息；气味",
-    level: "intermediate",
+    level: "basic",
     rank: 1013,
     source: "NGSL"
   },
   NONE: {
     meaning: "一点也不；毫不；没有人",
-    level: "intermediate",
+    level: "basic",
     rank: 1014,
     source: "NGSL"
   },
   EXCHANGE: {
     meaning: "交换；(电话)交换局；交换机",
-    level: "intermediate",
+    level: "basic",
     rank: 1015,
     source: "NGSL"
   },
   BUDGET: {
     meaning: "预算；编预算；编入预算",
-    level: "intermediate",
+    level: "basic",
     rank: 1016,
     source: "NGSL"
   },
   FAMOUS: {
     meaning: "a. 出名的；极好的",
-    level: "intermediate",
+    level: "basic",
     rank: 1017,
     source: "NGSL"
   },
   BLOOD: {
     meaning: "血；血统；流血",
-    level: "intermediate",
+    level: "basic",
     rank: 1018,
     source: "NGSL"
   },
   APPROPRIATE: {
     meaning: "a. 适当的；[经] 适当的；拨出",
-    level: "intermediate",
+    level: "basic",
     rank: 1019,
     source: "NGSL"
   },
   BLOCK: {
     meaning: "街区；木块；石块",
-    level: "intermediate",
+    level: "basic",
     rank: 1020,
     source: "NGSL"
   },
   WARM: {
     meaning: "a. 暖和的；暖的；温暖的",
-    level: "intermediate",
+    level: "basic",
     rank: 1021,
     source: "NGSL"
   },
   COUNT: {
     meaning: "计算；视为；计数",
-    level: "intermediate",
+    level: "basic",
     rank: 1022,
     source: "NGSL"
   },
   SCENE: {
     meaning: "场；情景；镜头",
-    level: "intermediate",
+    level: "basic",
     rank: 1023,
     source: "NGSL"
   },
   WRITER: {
     meaning: "作家；撰稿者；抄写员",
-    level: "intermediate",
+    level: "basic",
     rank: 1024,
     source: "NGSL"
   },
   CONTENT: {
     meaning: "内容；满足；意义",
-    level: "intermediate",
+    level: "basic",
     rank: 1025,
     source: "NGSL"
   },
   PREVENT: {
     meaning: "预防；防止；阻止",
-    level: "intermediate",
+    level: "basic",
     rank: 1026,
     source: "NGSL"
   },
   SAFE: {
     meaning: "保险箱；冷藏室；a. 安全的",
-    level: "intermediate",
+    level: "basic",
     rank: 1027,
     source: "NGSL"
   },
   INVITE: {
     meaning: "邀请；请求；引起",
-    level: "intermediate",
+    level: "basic",
     rank: 1028,
     source: "NGSL"
   },
   MIX: {
     meaning: "混合物；混乱；糊涂",
-    level: "intermediate",
+    level: "basic",
     rank: 1029,
     source: "NGSL"
   },
   ELEMENT: {
     meaning: "元件；元素；要素",
-    level: "intermediate",
+    level: "basic",
     rank: 1030,
     source: "NGSL"
   },
   EFFECTIVE: {
     meaning: "a. 有效的；有力的；实际的",
-    level: "intermediate",
+    level: "basic",
     rank: 1031,
     source: "NGSL"
   },
   CORRECT: {
     meaning: "a. 正确的；合适的；改正",
-    level: "intermediate",
+    level: "basic",
     rank: 1032,
     source: "NGSL"
   },
   MEDICAL: {
     meaning: "医生；体格检查；a. 医学的",
-    level: "intermediate",
+    level: "basic",
     rank: 1033,
     source: "NGSL"
   },
   ADMIT: {
     meaning: "承认；接受；允许进入",
-    level: "intermediate",
+    level: "basic",
     rank: 1034,
     source: "NGSL"
   },
   BEAT: {
     meaning: "心跳(声)；打；敲打声",
-    level: "intermediate",
+    level: "basic",
     rank: 1035,
     source: "NGSL"
   },
   TELEPHONE: {
     meaning: "电话；电话机；打电话",
-    level: "intermediate",
+    level: "basic",
     rank: 1036,
     source: "NGSL"
   },
   COPY: {
     meaning: "副本；摹仿；一册",
-    level: "intermediate",
+    level: "basic",
     rank: 1037,
     source: "NGSL"
   },
   COMMITTEE: {
     meaning: "委员会；[经] 委员会",
-    level: "intermediate",
+    level: "basic",
     rank: 1038,
     source: "NGSL"
   },
   AWARE: {
     meaning: "a. 知道的；有觉悟的",
-    level: "intermediate",
+    level: "basic",
     rank: 1039,
     source: "NGSL"
   },
   ADVICE: {
     meaning: "忠告；劝告；意见",
-    level: "intermediate",
+    level: "basic",
     rank: 1040,
     source: "NGSL"
   },
   HANDLE: {
     meaning: "柄；把手；把柄",
-    level: "intermediate",
+    level: "basic",
     rank: 1041,
     source: "NGSL"
   },
   GLASS: {
     meaning: "玻璃；玻璃杯；透镜",
-    level: "intermediate",
+    level: "basic",
     rank: 1042,
     source: "NGSL"
   },
   TRIAL: {
     meaning: "审判；试验；艰苦",
-    level: "intermediate",
+    level: "basic",
     rank: 1043,
     source: "NGSL"
   },
   STRESS: {
     meaning: "压力；紧迫；强调",
-    level: "intermediate",
+    level: "basic",
     rank: 1044,
     source: "NGSL"
   },
   RADIO: {
     meaning: "无线电；收音机；无线电报",
-    level: "intermediate",
+    level: "basic",
     rank: 1045,
     source: "NGSL"
   },
   ADMINISTRATION: {
     meaning: "行政；管理；政府机关",
-    level: "intermediate",
+    level: "basic",
     rank: 1046,
     source: "NGSL"
   },
   COMPLEX: {
     meaning: "综合体；情结；络合物",
-    level: "intermediate",
+    level: "basic",
     rank: 1047,
     source: "NGSL"
   },
   TEXT: {
     meaning: "文本；正文；课文",
-    level: "intermediate",
+    level: "basic",
     rank: 1048,
     source: "NGSL"
   },
   CONTEXT: {
     meaning: "上下文；背景；来龙去脉",
-    level: "intermediate",
+    level: "basic",
     rank: 1049,
     source: "NGSL+GRE_MASTER"
   },
   RIDE: {
     meaning: "骑马；乘坐；乘车",
-    level: "intermediate",
+    level: "basic",
     rank: 1050,
     source: "NGSL"
   },
   DIRECTLY: {
     meaning: "径直地；直接地；直率地",
-    level: "intermediate",
+    level: "basic",
     rank: 1051,
     source: "NGSL"
   },
   HEAVY: {
     meaning: "a. 重的；巨大的；沉重的",
-    level: "intermediate",
+    level: "basic",
     rank: 1052,
     source: "NGSL"
   },
   REMOVE: {
     meaning: "移动；调动；除去",
-    level: "intermediate",
+    level: "basic",
     rank: 1053,
     source: "NGSL"
   },
   CONDUCT: {
     meaning: "行为；举动；指导",
-    level: "intermediate",
+    level: "basic",
     rank: 1054,
     source: "NGSL"
   },
   EQUIPMENT: {
     meaning: "装备；设备；才能",
-    level: "intermediate",
+    level: "basic",
     rank: 1055,
     source: "NGSL"
   },
   OTHERWISE: {
     meaning: "否则；不同地；别的方式",
-    level: "intermediate",
+    level: "basic",
     rank: 1056,
     source: "NGSL"
   },
   TITLE: {
     meaning: "头衔；名称；标题",
-    level: "intermediate",
+    level: "basic",
     rank: 1057,
     source: "NGSL+GRE_MASTER"
   },
   EXTRA: {
     meaning: "额外的事物；另外的收费；a. 额外的",
-    level: "intermediate",
+    level: "basic",
     rank: 1058,
     source: "NGSL"
   },
   EXECUTIVE: {
     meaning: "执行部门；执行委员会；执行者",
-    level: "intermediate",
+    level: "basic",
     rank: 1059,
     source: "NGSL"
   },
   CHAIR: {
     meaning: "椅子；显要的席位；主席",
-    level: "intermediate",
+    level: "basic",
     rank: 1060,
     source: "NGSL"
   },
   EXPENSIVE: {
     meaning: "a. 贵的；奢华的；费用浩大的",
-    level: "intermediate",
+    level: "basic",
     rank: 1061,
     source: "NGSL"
   },
   SAMPLE: {
     meaning: "样品；范例；样本",
-    level: "intermediate",
+    level: "basic",
     rank: 1062,
     source: "NGSL"
   },
   SEX: {
     meaning: "性别；性欲；区别...的性别",
-    level: "intermediate",
+    level: "basic",
     rank: 1063,
     source: "NGSL"
   },
   DELIVER: {
     meaning: "递送；陈述；释放",
-    level: "intermediate",
+    level: "basic",
     rank: 1064,
     source: "NGSL"
   },
   VIDEO: {
     meaning: "影像；电视；a. 图像的",
-    level: "intermediate",
+    level: "basic",
     rank: 1065,
     source: "NGSL"
   },
   CONNECTION: {
     meaning: "连接；关系；前后关系",
-    level: "intermediate",
+    level: "basic",
     rank: 1066,
     source: "NGSL"
   },
   PRIMARY: {
     meaning: "最主要者；原色；a. 主要的",
-    level: "intermediate",
+    level: "basic",
     rank: 1067,
     source: "NGSL+GRE_MASTER"
   },
   WEATHER: {
     meaning: "天气；气象；处境",
-    level: "intermediate",
+    level: "basic",
     rank: 1068,
     source: "NGSL"
   },
   COLLECT: {
     meaning: "收集；聚集；集中",
-    level: "intermediate",
+    level: "basic",
     rank: 1069,
     source: "NGSL"
   },
   INFORM: {
     meaning: "通知；使了解；使充满",
-    level: "intermediate",
+    level: "basic",
     rank: 1070,
     source: "NGSL"
   },
   PRINCIPLE: {
     meaning: "原则；原理；主义",
-    level: "intermediate",
+    level: "basic",
     rank: 1071,
     source: "NGSL"
   },
   STRAIGHT: {
     meaning: "直线；直；a. 直的",
-    level: "intermediate",
+    level: "basic",
     rank: 1072,
     source: "NGSL"
   },
   APPEAL: {
     meaning: "恳求；诉请；上诉",
-    level: "intermediate",
+    level: "basic",
     rank: 1073,
     source: "NGSL"
   },
   HIGHLY: {
     meaning: "非常；非常赞许地；[电] 大大地",
-    level: "intermediate",
+    level: "basic",
     rank: 1074,
     source: "NGSL"
   },
   TRUST: {
     meaning: "信任；信赖；相信",
-    level: "intermediate",
+    level: "basic",
     rank: 1075,
     source: "NGSL"
   },
   WONDERFUL: {
     meaning: "a. 令人惊奇的；奇妙的；极好的",
-    level: "intermediate",
+    level: "basic",
     rank: 1076,
     source: "NGSL"
   },
   FLAT: {
     meaning: "a. 平坦的；单调的；无力的",
-    level: "intermediate",
+    level: "basic",
     rank: 1077,
     source: "NGSL"
   },
   ABSOLUTELY: {
     meaning: "完全地；绝对地；确确实实地",
-    level: "intermediate",
+    level: "basic",
     rank: 1078,
     source: "NGSL"
   },
   FLOW: {
     meaning: "流程；流动；流量",
-    level: "intermediate",
+    level: "basic",
     rank: 1079,
     source: "NGSL"
   },
   FAIR: {
     meaning: "展览会；市集；美好的事物",
-    level: "intermediate",
+    level: "basic",
     rank: 1080,
     source: "NGSL"
   },
   ADDITIONAL: {
     meaning: "a. 附加的；另外的；额外的",
-    level: "intermediate",
+    level: "basic",
     rank: 1081,
     source: "NGSL"
   },
   RESPONSIBLE: {
     meaning: "a. 有责任的；负责的；责任重大的",
-    level: "intermediate",
+    level: "basic",
     rank: 1082,
     source: "NGSL"
   },
   FARM: {
     meaning: "农场；农田；耕种",
-    level: "intermediate",
+    level: "basic",
     rank: 1083,
     source: "NGSL"
   },
   COLLECTION: {
     meaning: "收集；采集；(一批)收藏品",
-    level: "intermediate",
+    level: "basic",
     rank: 1084,
     source: "NGSL"
   },
   HANG: {
     meaning: "悬挂；诀窍；意义",
-    level: "intermediate",
+    level: "basic",
     rank: 1085,
     source: "NGSL"
   },
   NEGATIVE: {
     meaning: "否定；否定语；负数",
-    level: "intermediate",
+    level: "basic",
     rank: 1086,
     source: "NGSL"
   },
   BAND: {
     meaning: "带子；队；乐队",
-    level: "intermediate",
+    level: "basic",
     rank: 1087,
     source: "NGSL"
   },
   RELATIVE: {
     meaning: "亲戚；关系词；a. 有关系的",
-    level: "intermediate",
+    level: "basic",
     rank: 1088,
     source: "NGSL"
   },
   TOUR: {
     meaning: "旅游；观光旅行；任期",
-    level: "intermediate",
+    level: "basic",
     rank: 1089,
     source: "NGSL"
   },
   ALTERNATIVE: {
     meaning: "两者择一；供替代的选择；a. 两者择一的",
-    level: "intermediate",
+    level: "basic",
     rank: 1090,
     source: "NGSL"
   },
   SOFTWARE: {
     meaning: "软件；[计] 软设备",
-    level: "intermediate",
+    level: "basic",
     rank: 1091,
     source: "NGSL"
   },
   PAIR: {
     meaning: "一双；一对；一副",
-    level: "intermediate",
+    level: "basic",
     rank: 1092,
     source: "NGSL"
   },
   SHIP: {
     meaning: "船；舰；以船运送",
-    level: "intermediate",
+    level: "basic",
     rank: 1093,
     source: "NGSL"
   },
   ATTITUDE: {
     meaning: "态度；看法；姿势",
-    level: "intermediate",
+    level: "basic",
     rank: 1094,
     source: "NGSL"
   },
   CHEAP: {
     meaning: "a. 便宜的；不值钱的；可鄙的",
-    level: "intermediate",
+    level: "basic",
     rank: 1095,
     source: "NGSL"
   },
   DOUBLE: {
     meaning: "两倍；a. 两倍的；双重的",
-    level: "intermediate",
+    level: "basic",
     rank: 1096,
     source: "NGSL"
   },
   LEG: {
     meaning: "腿；假腿；路程",
-    level: "intermediate",
+    level: "basic",
     rank: 1097,
     source: "NGSL"
   },
   OBSERVE: {
     meaning: "觉察到；遵守；注意到",
-    level: "intermediate",
+    level: "basic",
     rank: 1098,
     source: "NGSL"
   },
   SENTENCE: {
     meaning: "句子；命题；宣判",
-    level: "intermediate",
+    level: "basic",
     rank: 1099,
     source: "NGSL"
   },
   PRINT: {
     meaning: "打印；版；印刷物",
-    level: "intermediate",
+    level: "basic",
     rank: 1100,
     source: "NGSL"
   },
   PROGRESS: {
     meaning: "进步；发展；前进",
-    level: "intermediate",
+    level: "basic",
     rank: 1101,
     source: "NGSL"
   },
   TRUTH: {
     meaning: "事实；实情；[法] 真实",
-    level: "intermediate",
+    level: "basic",
     rank: 1102,
     source: "NGSL"
   },
   NOBODY: {
     meaning: "小人物；无名小卒；无人",
-    level: "intermediate",
+    level: "basic",
     rank: 1103,
     source: "NGSL"
   },
   EXAMINE: {
     meaning: "检查；调查；考试",
-    level: "intermediate",
+    level: "basic",
     rank: 1104,
     source: "NGSL"
   },
   LAY: {
     meaning: "放置；产；铺设",
-    level: "intermediate",
+    level: "basic",
     rank: 1105,
     source: "NGSL"
   },
   SPEED: {
     meaning: "速率；速度；迅速",
-    level: "intermediate",
+    level: "basic",
     rank: 1106,
     source: "NGSL"
   },
   POLITICS: {
     meaning: "政治；政治学；政见",
-    level: "intermediate",
+    level: "basic",
     rank: 1107,
     source: "NGSL"
   },
   REPLY: {
     meaning: "答复；回答；答辩",
-    level: "intermediate",
+    level: "basic",
     rank: 1108,
     source: "NGSL"
   },
   DISPLAY: {
     meaning: "显示；陈列；炫耀",
-    level: "intermediate",
+    level: "basic",
     rank: 1109,
     source: "NGSL"
   },
   TRANSFER: {
     meaning: "迁移；移动；传递",
-    level: "intermediate",
+    level: "basic",
     rank: 1110,
     source: "NGSL"
   },
   PERFECT: {
     meaning: "完成时；a. 完美的；完好的",
-    level: "intermediate",
+    level: "basic",
     rank: 1111,
     source: "NGSL"
   },
   SLIGHTLY: {
     meaning: "些微地；苗条地",
-    level: "intermediate",
+    level: "basic",
     rank: 1112,
     source: "NGSL"
   },
   OVERALL: {
     meaning: "a. 全部的；全体的；从头至尾的",
-    level: "intermediate",
+    level: "basic",
     rank: 1113,
     source: "NGSL"
   },
   INTEND: {
     meaning: "计划；打算；意思是",
-    level: "intermediate",
+    level: "basic",
     rank: 1114,
     source: "NGSL"
   },
   USER: {
     meaning: "使用者；[计] 用户",
-    level: "intermediate",
+    level: "basic",
     rank: 1115,
     source: "NGSL"
   },
   RESPOND: {
     meaning: "以...回答；回答；响应",
-    level: "intermediate",
+    level: "basic",
     rank: 1116,
     source: "NGSL"
   },
   DINNER: {
     meaning: "晚餐；正餐；宴会",
-    level: "intermediate",
+    level: "basic",
     rank: 1117,
     source: "NGSL"
   },
   SLOW: {
     meaning: "a. 慢的；缓慢的；迟缓的",
-    level: "intermediate",
+    level: "basic",
     rank: 1118,
     source: "NGSL"
   },
   REGULAR: {
     meaning: "a. 规则的；常例的；有秩序的",
-    level: "intermediate",
+    level: "basic",
     rank: 1119,
     source: "NGSL"
   },
   PHYSICAL: {
     meaning: "a. 身体的；物质的；自然的",
-    level: "intermediate",
+    level: "basic",
     rank: 1120,
     source: "NGSL"
   },
   APART: {
     meaning: "成零碎；成距离；分别地",
-    level: "intermediate",
+    level: "basic",
     rank: 1121,
     source: "NGSL"
   },
   SUIT: {
     meaning: "套装；诉讼；请求",
-    level: "intermediate",
+    level: "basic",
     rank: 1122,
     source: "NGSL"
   },
   FEDERAL: {
     meaning: "a. 联邦的；联合的；同盟的",
-    level: "intermediate",
+    level: "basic",
     rank: 1123,
     source: "NGSL"
   },
   REVEAL: {
     meaning: "露出；显示；透露",
-    level: "intermediate",
+    level: "basic",
     rank: 1124,
     source: "NGSL"
   },
   PERCENTAGE: {
     meaning: "百分比；比率；部分",
-    level: "intermediate",
+    level: "basic",
     rank: 1125,
     source: "NGSL"
   },
   PEACE: {
     meaning: "和平；和约；治安",
-    level: "intermediate",
+    level: "basic",
     rank: 1126,
     source: "NGSL"
   },
   STATUS: {
     meaning: "状态；情形；地位",
-    level: "intermediate",
+    level: "basic",
     rank: 1127,
     source: "NGSL"
   },
   CRIME: {
     meaning: "犯罪；罪行；罪恶",
-    level: "intermediate",
+    level: "basic",
     rank: 1128,
     source: "NGSL"
   },
   DECLINE: {
     meaning: "衰退；跌落；下降",
-    level: "intermediate",
+    level: "basic",
     rank: 1129,
     source: "NGSL"
   },
   DECADE: {
     meaning: "十年；十",
-    level: "intermediate",
+    level: "basic",
     rank: 1130,
     source: "NGSL"
   },
   LAUNCH: {
     meaning: "下水；汽艇；发射",
-    level: "intermediate",
+    level: "basic",
     rank: 1131,
     source: "NGSL"
   },
   WARN: {
     meaning: "警告；提醒；通知",
-    level: "intermediate",
+    level: "basic",
     rank: 1132,
     source: "NGSL"
   },
   CONSUMER: {
     meaning: "消费者；[经] 消费者；用户",
-    level: "intermediate",
+    level: "basic",
     rank: 1133,
     source: "NGSL"
   },
   FAVOR: {
     meaning: "好意；喜爱；赐予",
-    level: "intermediate",
+    level: "basic",
     rank: 1134,
     source: "NGSL"
   },
   DRY: {
     meaning: "a. 干的；无酒的；枯燥无味的",
-    level: "intermediate",
+    level: "basic",
     rank: 1135,
     source: "NGSL"
   },
   PARTNER: {
     meaning: "合伙人；股东；伙伴",
-    level: "intermediate",
+    level: "basic",
     rank: 1136,
     source: "NGSL"
   },
   INSTITUTION: {
     meaning: "机构；惯例；制度",
-    level: "intermediate",
+    level: "basic",
     rank: 1137,
     source: "NGSL"
   },
   SPOT: {
     meaning: "污点；地点；斑点",
-    level: "intermediate",
+    level: "basic",
     rank: 1138,
     source: "NGSL"
   },
   HORSE: {
     meaning: "马；骑兵；脚架",
-    level: "intermediate",
+    level: "basic",
     rank: 1139,
     source: "NGSL"
   },
   EVENTUALLY: {
     meaning: "最后；终于",
-    level: "intermediate",
+    level: "basic",
     rank: 1140,
     source: "NGSL"
   },
   HEAT: {
     meaning: "热；热度；体温",
-    level: "intermediate",
+    level: "basic",
     rank: 1141,
     source: "NGSL"
   },
   EXCITE: {
     meaning: "刺激；使兴奋；激励",
-    level: "intermediate",
+    level: "basic",
     rank: 1142,
     source: "NGSL"
   },
   READER: {
     meaning: "读者；读物；文选",
-    level: "intermediate",
+    level: "basic",
     rank: 1143,
     source: "NGSL"
   },
   IMPORTANCE: {
     meaning: "重要；重要性；重要地位",
-    level: "intermediate",
+    level: "basic",
     rank: 1144,
     source: "NGSL"
   },
   DISTANCE: {
     meaning: "距离；远方；遥远",
-    level: "intermediate",
+    level: "basic",
     rank: 1145,
     source: "NGSL"
   },
   GUIDE: {
     meaning: "引导者；导游；指南",
-    level: "intermediate",
+    level: "basic",
     rank: 1146,
     source: "NGSL"
   },
   GRANT: {
     meaning: "授予；授予物；允许",
-    level: "intermediate",
+    level: "basic",
     rank: 1147,
     source: "NGSL"
   },
   TAXI: {
     meaning: "出租车；乘出租车；用出租车送",
-    level: "intermediate",
+    level: "basic",
     rank: 1148,
     source: "NGSL"
   },
   FEED: {
     meaning: "饲料；一餐；饲养",
-    level: "intermediate",
+    level: "basic",
     rank: 1149,
     source: "NGSL"
   },
   PAIN: {
     meaning: "痛苦；疼痛；辛苦",
-    level: "intermediate",
+    level: "basic",
     rank: 1150,
     source: "NGSL"
   },
   SECTOR: {
     meaning: "扇形；部门；部分",
-    level: "intermediate",
+    level: "basic",
     rank: 1151,
     source: "NGSL"
   },
   MISTAKE: {
     meaning: "错误；误会；犯错",
-    level: "intermediate",
+    level: "basic",
     rank: 1152,
     source: "NGSL"
   },
   ENSURE: {
     meaning: "确定；保证；担保",
-    level: "intermediate",
+    level: "basic",
     rank: 1153,
     source: "NGSL"
   },
   SATISFY: {
     meaning: "使满意；满足；符合",
-    level: "intermediate",
+    level: "basic",
     rank: 1154,
     source: "NGSL"
   },
   CHIEF: {
     meaning: "领袖；酋长；长官",
-    level: "intermediate",
+    level: "basic",
     rank: 1155,
     source: "NGSL"
   },
   COOL: {
     meaning: "凉爽；凉爽的空气；a. 凉爽的",
-    level: "intermediate",
+    level: "basic",
     rank: 1156,
     source: "NGSL"
   },
   EXPERT: {
     meaning: "专家；行家；a. 老练的",
-    level: "intermediate",
+    level: "basic",
     rank: 1157,
     source: "NGSL"
   },
   WAVE: {
     meaning: "波；波浪；波动",
-    level: "intermediate",
+    level: "basic",
     rank: 1158,
     source: "NGSL"
   },
   SOUTH: {
     meaning: "南方；南；a. 南的",
-    level: "intermediate",
+    level: "basic",
     rank: 1159,
     source: "NGSL"
   },
   LABOR: {
     meaning: "劳动；努力；工作",
-    level: "intermediate",
+    level: "basic",
     rank: 1160,
     source: "NGSL"
   },
   SURFACE: {
     meaning: "面；表面；水面",
-    level: "intermediate",
+    level: "basic",
     rank: 1161,
     source: "NGSL"
   },
   LIBRARY: {
     meaning: "图书馆；藏书；库",
-    level: "intermediate",
+    level: "basic",
     rank: 1162,
     source: "NGSL"
   },
   EXCELLENT: {
     meaning: "a. 优良的；杰出的；出色的",
-    level: "intermediate",
+    level: "basic",
     rank: 1163,
     source: "NGSL"
   },
   EDGE: {
     meaning: "边缘；尖锐；刀刃",
-    level: "intermediate",
+    level: "basic",
     rank: 1164,
     source: "NGSL"
   },
   CAMP: {
     meaning: "露营；帐篷；露营",
-    level: "intermediate",
+    level: "basic",
     rank: 1165,
     source: "NGSL+GRE_MASTER"
   },
   AUDIENCE: {
     meaning: "听众；观众；读者",
-    level: "intermediate",
+    level: "basic",
     rank: 1166,
     source: "NGSL"
   },
   LIFT: {
     meaning: "举起；帮助；昂扬",
-    level: "intermediate",
+    level: "basic",
     rank: 1167,
     source: "NGSL"
   },
   PROCEDURE: {
     meaning: "程序；过程；手续",
-    level: "intermediate",
+    level: "basic",
     rank: 1168,
     source: "NGSL"
   },
   EMAIL: {
     meaning: "电子信函",
-    level: "intermediate",
+    level: "basic",
     rank: 1169,
     source: "NGSL"
   },
   GLOBAL: {
     meaning: "a. 通用的；全球的；球形的",
-    level: "intermediate",
+    level: "basic",
     rank: 1170,
     source: "NGSL"
   },
   STRUGGLE: {
     meaning: "斗争；努力；奋斗",
-    level: "intermediate",
+    level: "basic",
     rank: 1171,
     source: "NGSL"
   },
   ADVERTISE: {
     meaning: "做广告；通知；公布",
-    level: "intermediate",
+    level: "basic",
     rank: 1172,
     source: "NGSL"
   },
   SELECT: {
     meaning: "a. 挑选出来的；极好的；选择",
-    level: "intermediate",
+    level: "basic",
     rank: 1173,
     source: "NGSL"
   },
   SURROUND: {
     meaning: "包围；环绕；围绕",
-    level: "intermediate",
+    level: "basic",
     rank: 1174,
     source: "NGSL"
   },
   EXTENT: {
     meaning: "范围；程度；区域",
-    level: "intermediate",
+    level: "basic",
     rank: 1175,
     source: "NGSL"
   },
   RIVER: {
     meaning: "河；江；[法] 河流",
-    level: "intermediate",
+    level: "basic",
     rank: 1176,
     source: "NGSL"
   },
   ANNUAL: {
     meaning: "年刊；年报；a. 每年的",
-    level: "intermediate",
+    level: "basic",
     rank: 1177,
     source: "NGSL"
   },
   FULLY: {
     meaning: "十分地；完全地；充分地",
-    level: "intermediate",
+    level: "basic",
     rank: 1178,
     source: "NGSL"
   },
   CONTRAST: {
     meaning: "差别；对比；对照物",
-    level: "intermediate",
+    level: "basic",
     rank: 1179,
     source: "NGSL"
   },
   ROLL: {
     meaning: "卷；滚动；名单",
-    level: "intermediate",
+    level: "basic",
     rank: 1180,
     source: "NGSL"
   },
   REALITY: {
     meaning: "实在；事实；实体",
-    level: "intermediate",
+    level: "basic",
     rank: 1181,
     source: "NGSL"
   },
   PHOTOGRAPH: {
     meaning: "相片；照片；逼真的描绘",
-    level: "intermediate",
+    level: "basic",
     rank: 1182,
     source: "NGSL"
   },
   ARTIST: {
     meaning: "艺术家；画家",
-    level: "intermediate",
+    level: "basic",
     rank: 1183,
     source: "NGSL"
   },
   CONFLICT: {
     meaning: "战斗；冲突；矛盾",
-    level: "intermediate",
+    level: "basic",
     rank: 1184,
     source: "NGSL"
   },
   ENTIRE: {
     meaning: "整个；全部；a. 全体的",
-    level: "intermediate",
+    level: "basic",
     rank: 1185,
     source: "NGSL"
   },
   PRESENCE: {
     meaning: "出席；面前；存在",
-    level: "intermediate",
+    level: "basic",
     rank: 1186,
     source: "NGSL"
   },
   CROWD: {
     meaning: "群众；一伙人；拥挤",
-    level: "intermediate",
+    level: "basic",
     rank: 1187,
     source: "NGSL"
   },
   CORNER: {
     meaning: "角落；转角；窘境",
-    level: "intermediate",
+    level: "basic",
     rank: 1188,
     source: "NGSL"
   },
   GAS: {
     meaning: "气体；汽油；瓦斯",
-    level: "intermediate",
+    level: "basic",
     rank: 1189,
     source: "NGSL"
   },
   SHIFT: {
     meaning: "变化；移动；轮班",
-    level: "intermediate",
+    level: "basic",
     rank: 1190,
     source: "NGSL+GRE_MASTER"
   },
   NET: {
     meaning: "网；网状物；罗网",
-    level: "intermediate",
+    level: "basic",
     rank: 1191,
     source: "NGSL"
   },
   CATEGORY: {
     meaning: "种类；类项；[计] 分类",
-    level: "intermediate",
+    level: "basic",
     rank: 1192,
     source: "NGSL"
   },
   SECRETARY: {
     meaning: "秘书；书记；大臣",
-    level: "intermediate",
+    level: "basic",
     rank: 1193,
     source: "NGSL"
   },
   DEFENSE: {
     meaning: "防卫；防卫物；[医] 防御",
-    level: "intermediate",
+    level: "basic",
     rank: 1194,
     source: "NGSL"
   },
   QUICK: {
     meaning: "a. 快的；迅速的；敏捷的",
-    level: "intermediate",
+    level: "basic",
     rank: 1195,
     source: "NGSL"
   },
   COOK: {
     meaning: "厨子；厨师；烹调",
-    level: "intermediate",
+    level: "basic",
     rank: 1196,
     source: "NGSL"
   },
   SPREAD: {
     meaning: "传播；散布；伸展",
-    level: "intermediate",
+    level: "basic",
     rank: 1197,
     source: "NGSL"
   },
   NUCLEAR: {
     meaning: "a. 核子的；原子能的；核的",
-    level: "intermediate",
+    level: "basic",
     rank: 1198,
     source: "NGSL"
   },
   SCALE: {
     meaning: "刻度；衡量；比例",
-    level: "intermediate",
+    level: "basic",
     rank: 1199,
     source: "NGSL+GRE_MASTER"
   },
   DRIVER: {
     meaning: "驾驶员；驱动器；驱动程序",
-    level: "intermediate",
+    level: "basic",
     rank: 1200,
     source: "NGSL"
   },
   BALL: {
     meaning: "球；舞会；球状物",
-    level: "intermediate",
+    level: "basic",
     rank: 1201,
     source: "NGSL"
   },
@@ -7314,7 +7317,7 @@ const DICTIONARY = {
   },
   LEFT: {
     meaning: "a. 左边的；左倾的；左侧的",
-    level: "intermediate",
+    level: "basic",
     rank: 1220,
     source: "NGSL"
   },
@@ -7386,7 +7389,7 @@ const DICTIONARY = {
   },
   RAIN: {
     meaning: "雨；下雨；雨天",
-    level: "intermediate",
+    level: "basic",
     rank: 1232,
     source: "NGSL"
   },
@@ -7398,13 +7401,13 @@ const DICTIONARY = {
   },
   LESSON: {
     meaning: "课；课业；教训",
-    level: "intermediate",
+    level: "basic",
     rank: 1234,
     source: "NGSL"
   },
   BRAIN: {
     meaning: "脑；打碎脑部",
-    level: "intermediate",
+    level: "basic",
     rank: 1235,
     source: "NGSL"
   },
@@ -7464,7 +7467,7 @@ const DICTIONARY = {
   },
   MOUNTAIN: {
     meaning: "山；山脉；大堆",
-    level: "intermediate",
+    level: "basic",
     rank: 1245,
     source: "NGSL"
   },
@@ -7506,7 +7509,7 @@ const DICTIONARY = {
   },
   BAG: {
     meaning: "袋子；袋状物；使膨大",
-    level: "intermediate",
+    level: "basic",
     rank: 1252,
     source: "NGSL"
   },
@@ -7530,7 +7533,7 @@ const DICTIONARY = {
   },
   PLUS: {
     meaning: "加上；加；外加",
-    level: "intermediate",
+    level: "basic",
     rank: 1256,
     source: "NGSL"
   },
@@ -7620,7 +7623,7 @@ const DICTIONARY = {
   },
   BIRD: {
     meaning: "鸟；羽毛球；打鸟",
-    level: "intermediate",
+    level: "basic",
     rank: 1271,
     source: "NGSL"
   },
@@ -7722,7 +7725,7 @@ const DICTIONARY = {
   },
   EARTH: {
     meaning: "地球；泥土；世界",
-    level: "intermediate",
+    level: "basic",
     rank: 1288,
     source: "NGSL"
   },
@@ -7800,7 +7803,7 @@ const DICTIONARY = {
   },
   FLOWER: {
     meaning: "花；开花植物；精华",
-    level: "intermediate",
+    level: "basic",
     rank: 1301,
     source: "NGSL"
   },
@@ -7938,7 +7941,7 @@ const DICTIONARY = {
   },
   JUMP: {
     meaning: "跳跃；跳动；暴涨",
-    level: "intermediate",
+    level: "basic",
     rank: 1324,
     source: "NGSL"
   },
@@ -7998,7 +8001,7 @@ const DICTIONARY = {
   },
   LUNCH: {
     meaning: "午餐",
-    level: "intermediate",
+    level: "basic",
     rank: 1334,
     source: "NGSL"
   },
@@ -8160,7 +8163,7 @@ const DICTIONARY = {
   },
   SUN: {
     meaning: "太阳；日；日光",
-    level: "intermediate",
+    level: "basic",
     rank: 1361,
     source: "NGSL"
   },
@@ -8280,7 +8283,7 @@ const DICTIONARY = {
   },
   EGG: {
     meaning: "蛋；卵；挑唆",
-    level: "intermediate",
+    level: "basic",
     rank: 1381,
     source: "NGSL"
   },
@@ -8364,7 +8367,7 @@ const DICTIONARY = {
   },
   COFFEE: {
     meaning: "咖啡；咖啡色；[医] 咖啡",
-    level: "intermediate",
+    level: "basic",
     rank: 1395,
     source: "NGSL"
   },
@@ -8628,7 +8631,7 @@ const DICTIONARY = {
   },
   MOUTH: {
     meaning: "嘴；口；口腔",
-    level: "intermediate",
+    level: "basic",
     rank: 1439,
     source: "NGSL"
   },
@@ -8712,7 +8715,7 @@ const DICTIONARY = {
   },
   GOLD: {
     meaning: "黄金；钱财；金块",
-    level: "intermediate",
+    level: "basic",
     rank: 1453,
     source: "NGSL"
   },
@@ -9012,7 +9015,7 @@ const DICTIONARY = {
   },
   FINGER: {
     meaning: "手指；指状物；(手套的)手指部分",
-    level: "intermediate",
+    level: "basic",
     rank: 1503,
     source: "NGSL"
   },
@@ -9042,7 +9045,7 @@ const DICTIONARY = {
   },
   WAKE: {
     meaning: "叫醒；激发；醒来",
-    level: "intermediate",
+    level: "basic",
     rank: 1508,
     source: "NGSL+GRE_MASTER"
   },
@@ -9522,7 +9525,7 @@ const DICTIONARY = {
   },
   DESK: {
     meaning: "书桌；办公桌；工作台",
-    level: "intermediate",
+    level: "basic",
     rank: 1588,
     source: "NGSL"
   },
@@ -9588,7 +9591,7 @@ const DICTIONARY = {
   },
   TEA: {
     meaning: "茶；茶叶；[医] 茶",
-    level: "intermediate",
+    level: "basic",
     rank: 1599,
     source: "NGSL"
   },
@@ -9786,7 +9789,7 @@ const DICTIONARY = {
   },
   DAD: {
     meaning: "爸爸；爹爹",
-    level: "intermediate",
+    level: "basic",
     rank: 1632,
     source: "NGSL"
   },
@@ -9834,7 +9837,7 @@ const DICTIONARY = {
   },
   FRUIT: {
     meaning: "水果；果类；结果",
-    level: "intermediate",
+    level: "basic",
     rank: 1640,
     source: "NGSL"
   },
@@ -9978,7 +9981,7 @@ const DICTIONARY = {
   },
   EAR: {
     meaning: "耳朵；倾听；听觉",
-    level: "intermediate",
+    level: "basic",
     rank: 1664,
     source: "NGSL"
   },
@@ -10062,7 +10065,7 @@ const DICTIONARY = {
   },
   CAT: {
     meaning: "猫；恶妇；呕吐",
-    level: "intermediate",
+    level: "basic",
     rank: 1678,
     source: "NGSL"
   },
@@ -10254,7 +10257,7 @@ const DICTIONARY = {
   },
   SAD: {
     meaning: "a. 忧愁的；悲哀的",
-    level: "intermediate",
+    level: "basic",
     rank: 1710,
     source: "NGSL"
   },
@@ -10314,7 +10317,7 @@ const DICTIONARY = {
   },
   SKY: {
     meaning: "天空；天色；天堂",
-    level: "intermediate",
+    level: "basic",
     rank: 1720,
     source: "NGSL"
   },
@@ -10728,7 +10731,7 @@ const DICTIONARY = {
   },
   MILK: {
     meaning: "奶；乳状物；挤乳",
-    level: "intermediate",
+    level: "basic",
     rank: 1789,
     source: "NGSL"
   },
@@ -10800,2287 +10803,2287 @@ const DICTIONARY = {
   },
   INJURY: {
     meaning: "伤害；侮辱；[医] 伤",
-    level: "advanced",
+    level: "intermediate",
     rank: 1801,
     source: "NGSL"
   },
   VAST: {
     meaning: "a. 巨大的；广大的；非常的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1802,
     source: "NGSL"
   },
   EXHIBITION: {
     meaning: "表现；展览会；展览品",
-    level: "advanced",
+    level: "intermediate",
     rank: 1803,
     source: "NGSL"
   },
   PRODUCER: {
     meaning: "生产者；制作者；制作人",
-    level: "advanced",
+    level: "intermediate",
     rank: 1804,
     source: "NGSL"
   },
   REGIONAL: {
     meaning: "a. 地方的；地域性的；[医] 区的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1805,
     source: "NGSL"
   },
   IMMEDIATE: {
     meaning: "a. 立即的；直接的；接近的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1806,
     source: "NGSL"
   },
   INCIDENT: {
     meaning: "事件；事变；小事",
-    level: "advanced",
+    level: "intermediate",
     rank: 1807,
     source: "NGSL"
   },
   CHILDHOOD: {
     meaning: "孩童时期；[医] 儿童期",
-    level: "advanced",
+    level: "intermediate",
     rank: 1808,
     source: "NGSL"
   },
   SLIP: {
     meaning: "滑；滑行；事故",
-    level: "advanced",
+    level: "intermediate",
     rank: 1810,
     source: "NGSL"
   },
   ACCOMPANY: {
     meaning: "陪伴；伴随；补充",
-    level: "advanced",
+    level: "intermediate",
     rank: 1811,
     source: "NGSL"
   },
   POLITICIAN: {
     meaning: "政客；政治家；从事党派政治的人",
-    level: "advanced",
+    level: "intermediate",
     rank: 1812,
     source: "NGSL"
   },
   ANGRY: {
     meaning: "a. 生气的；愤怒的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1813,
     source: "NGSL"
   },
   KNOCK: {
     meaning: "敲；敲打；敲门",
-    level: "advanced",
+    level: "intermediate",
     rank: 1814,
     source: "NGSL"
   },
   SEED: {
     meaning: "种子；籽；萌芽",
-    level: "advanced",
+    level: "intermediate",
     rank: 1815,
     source: "NGSL"
   },
   SALARY: {
     meaning: "薪水；给...加薪",
-    level: "advanced",
+    level: "intermediate",
     rank: 1816,
     source: "NGSL"
   },
   ILLUSTRATE: {
     meaning: "举例说明；作图解；阐明",
-    level: "advanced",
+    level: "intermediate",
     rank: 1817,
     source: "NGSL"
   },
   BREAKFAST: {
     meaning: "早餐",
-    level: "advanced",
+    level: "basic",
     rank: 1819,
     source: "NGSL"
   },
   TEMPORARY: {
     meaning: "a. 暂时的；临时的；临时工",
-    level: "advanced",
+    level: "intermediate",
     rank: 1820,
     source: "NGSL"
   },
   LIBERAL: {
     meaning: "自由主义者；a. 慷慨的；不拘泥的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1821,
     source: "NGSL"
   },
   LAKE: {
     meaning: "湖；池；色淀",
-    level: "advanced",
+    level: "basic",
     rank: 1822,
     source: "NGSL"
   },
   QUALIFY: {
     meaning: "取得资格；有资格；使有资格",
-    level: "advanced",
+    level: "intermediate",
     rank: 1823,
     source: "NGSL"
   },
   COMPETITIVE: {
     meaning: "a. 竞争的；[经] 竞争的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1824,
     source: "NGSL"
   },
   TRULY: {
     meaning: "真实地；不假",
-    level: "advanced",
+    level: "intermediate",
     rank: 1825,
     source: "NGSL"
   },
   HI: {
     meaning: "interj. 喂",
-    level: "advanced",
+    level: "basic",
     rank: 1826,
     source: "NGSL"
   },
   YELLOW: {
     meaning: "黄色；a. 黄色的",
-    level: "advanced",
+    level: "basic",
     rank: 1827,
     source: "NGSL"
   },
   HABIT: {
     meaning: "习惯；嗜好；习性",
-    level: "advanced",
+    level: "intermediate",
     rank: 1828,
     source: "NGSL"
   },
   DISK: {
     meaning: "圆盘；磁盘；[计] 磁盘",
-    level: "advanced",
+    level: "intermediate",
     rank: 1829,
     source: "NGSL"
   },
   CORE: {
     meaning: "核心；果心；要点",
-    level: "advanced",
+    level: "intermediate",
     rank: 1830,
     source: "NGSL"
   },
   EMOTIONAL: {
     meaning: "a. 情绪的；情感的；[医] 情绪的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1831,
     source: "NGSL"
   },
   AIRCRAFT: {
     meaning: "航空器；飞机；[机] 航空器",
-    level: "advanced",
+    level: "intermediate",
     rank: 1832,
     source: "NGSL"
   },
   SELF: {
     meaning: "自己；自我；本性",
-    level: "advanced",
+    level: "intermediate",
     rank: 1833,
     source: "NGSL"
   },
   METAL: {
     meaning: "金属；金属制品；合金",
-    level: "advanced",
+    level: "intermediate",
     rank: 1834,
     source: "NGSL"
   },
   EXISTENCE: {
     meaning: "存在；生存；[法] 存在",
-    level: "advanced",
+    level: "intermediate",
     rank: 1835,
     source: "NGSL"
   },
   BONE: {
     meaning: "骨头；骨；骨制品",
-    level: "advanced",
+    level: "intermediate",
     rank: 1836,
     source: "NGSL"
   },
   PANEL: {
     meaning: "嵌板；仪表板；专题讨论小组",
-    level: "advanced",
+    level: "intermediate",
     rank: 1837,
     source: "NGSL"
   },
   APPOINTMENT: {
     meaning: "约会；委任的职位；委派",
-    level: "advanced",
+    level: "intermediate",
     rank: 1839,
     source: "NGSL"
   },
   EMPHASIZE: {
     meaning: "强调；加强语气；着重",
-    level: "advanced",
+    level: "intermediate",
     rank: 1840,
     source: "NGSL"
   },
   MAXIMUM: {
     meaning: "极点；最大量；极大",
-    level: "advanced",
+    level: "intermediate",
     rank: 1841,
     source: "NGSL"
   },
   EFFECTIVELY: {
     meaning: "有效地；有力地；实际上",
-    level: "advanced",
+    level: "intermediate",
     rank: 1842,
     source: "NGSL"
   },
   ELSEWHERE: {
     meaning: "在别处",
-    level: "advanced",
+    level: "intermediate",
     rank: 1843,
     source: "NGSL"
   },
   BOTHER: {
     meaning: "烦扰；迷惑；烦恼",
-    level: "advanced",
+    level: "intermediate",
     rank: 1844,
     source: "NGSL"
   },
   INITIATIVE: {
     meaning: "主动行动；首创精神；主动权",
-    level: "advanced",
+    level: "intermediate",
     rank: 1845,
     source: "NGSL"
   },
   SHARP: {
     meaning: "半升音调；利刃；骗子",
-    level: "advanced",
+    level: "intermediate",
     rank: 1846,
     source: "NGSL"
   },
   DIET: {
     meaning: "日常饮食；议会；照规定饮食",
-    level: "advanced",
+    level: "intermediate",
     rank: 1847,
     source: "NGSL"
   },
   MOTION: {
     meaning: "移动；手势；动作",
-    level: "advanced",
+    level: "intermediate",
     rank: 1848,
     source: "NGSL"
   },
   GRAY: {
     meaning: "灰色；暗淡；a. 灰色的",
-    level: "advanced",
+    level: "basic",
     rank: 1849,
     source: "NGSL"
   },
   PLASTIC: {
     meaning: "塑料；可塑体；可塑性物质",
-    level: "advanced",
+    level: "intermediate",
     rank: 1850,
     source: "NGSL"
   },
   COMPLICATE: {
     meaning: "弄复杂；使错综；使恶化",
-    level: "advanced",
+    level: "intermediate",
     rank: 1851,
     source: "NGSL"
   },
   DISCIPLINE: {
     meaning: "训练；纪律；训练",
-    level: "advanced",
+    level: "intermediate",
     rank: 1852,
     source: "NGSL"
   },
   DISAPPOINT: {
     meaning: "使失望",
-    level: "advanced",
+    level: "intermediate",
     rank: 1853,
     source: "NGSL"
   },
   BOSS: {
     meaning: "老板；上司；岩瘤",
-    level: "advanced",
+    level: "intermediate",
     rank: 1854,
     source: "NGSL"
   },
   ASSUMPTION: {
     meaning: "假定；自负；担任",
-    level: "advanced",
+    level: "intermediate",
     rank: 1855,
     source: "NGSL"
   },
   FREEZE: {
     meaning: "冻结；冷冻；僵硬",
-    level: "advanced",
+    level: "intermediate",
     rank: 1856,
     source: "NGSL"
   },
   EXTREME: {
     meaning: "极端；末端；a. 极端的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1857,
     source: "NGSL"
   },
   PASSAGE: {
     meaning: "通道；通过；移居",
-    level: "advanced",
+    level: "intermediate",
     rank: 1858,
     source: "NGSL"
   },
   REPUTATION: {
     meaning: "名誉；名声；声望",
-    level: "advanced",
+    level: "intermediate",
     rank: 1859,
     source: "NGSL"
   },
   FORTH: {
     meaning: "往前；以后；向外",
-    level: "advanced",
+    level: "intermediate",
     rank: 1860,
     source: "NGSL"
   },
   NEGOTIATION: {
     meaning: "谈判；磋商；交涉",
-    level: "advanced",
+    level: "intermediate",
     rank: 1861,
     source: "NGSL"
   },
   MECHANISM: {
     meaning: "机械；机构；结构",
-    level: "advanced",
+    level: "intermediate",
     rank: 1862,
     source: "NGSL"
   },
   COAT: {
     meaning: "外套；外面覆盖；给...穿外套",
-    level: "advanced",
+    level: "intermediate",
     rank: 1863,
     source: "NGSL"
   },
   DEMOCRACY: {
     meaning: "民主政治；民主主义；[法] 民主",
-    level: "advanced",
+    level: "intermediate",
     rank: 1864,
     source: "NGSL"
   },
   POCKET: {
     meaning: "口袋；钱袋；钱",
-    level: "advanced",
+    level: "intermediate",
     rank: 1865,
     source: "NGSL"
   },
   LUCKY: {
     meaning: "a. 幸运的；吉祥的；好运的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1866,
     source: "NGSL"
   },
   CRASH: {
     meaning: "哗啦声；猛撞；崩溃",
-    level: "advanced",
+    level: "intermediate",
     rank: 1867,
     source: "NGSL"
   },
   OBSERVATION: {
     meaning: "观察；注意；观测",
-    level: "advanced",
+    level: "intermediate",
     rank: 1868,
     source: "NGSL"
   },
   MEAT: {
     meaning: "肉；餐；食物",
-    level: "advanced",
+    level: "basic",
     rank: 1869,
     source: "NGSL"
   },
   CONCENTRATION: {
     meaning: "集中；专心；[化] 浓度",
-    level: "advanced",
+    level: "intermediate",
     rank: 1870,
     source: "NGSL"
   },
   IMPLICATION: {
     meaning: "牵连；含义；暗示",
-    level: "advanced",
+    level: "intermediate",
     rank: 1871,
     source: "NGSL"
   },
   DESERVE: {
     meaning: "该得到；值得；应得报答",
-    level: "advanced",
+    level: "intermediate",
     rank: 1872,
     source: "NGSL"
   },
   UNUSUAL: {
     meaning: "a. 不寻常的；罕见的；与众不同的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1873,
     source: "NGSL"
   },
   DEFEND: {
     meaning: "防护；辩护；防卫",
-    level: "advanced",
+    level: "intermediate",
     rank: 1874,
     source: "NGSL"
   },
   CLASSIC: {
     meaning: "古典作品；杰作；大艺术家",
-    level: "advanced",
+    level: "intermediate",
     rank: 1875,
     source: "NGSL"
   },
   KING: {
     meaning: "国王；君主；使...成为君主",
-    level: "advanced",
+    level: "intermediate",
     rank: 1876,
     source: "NGSL"
   },
   INTERACTION: {
     meaning: "交互作用；交感；[计] 交互作用",
-    level: "advanced",
+    level: "intermediate",
     rank: 1877,
     source: "NGSL"
   },
   REPAIR: {
     meaning: "修理；补救；修复",
-    level: "advanced",
+    level: "intermediate",
     rank: 1878,
     source: "NGSL"
   },
   COLLAPSE: {
     meaning: "崩溃；倒塌；虚脱",
-    level: "advanced",
+    level: "intermediate",
     rank: 1879,
     source: "NGSL"
   },
   BORROW: {
     meaning: "借；借入；借用",
-    level: "advanced",
+    level: "intermediate",
     rank: 1880,
     source: "NGSL"
   },
   FUNDAMENTAL: {
     meaning: "基本原理；原则；基波",
-    level: "advanced",
+    level: "intermediate",
     rank: 1881,
     source: "NGSL"
   },
   DISH: {
     meaning: "盘子；碟；菜肴",
-    level: "advanced",
+    level: "intermediate",
     rank: 1882,
     source: "NGSL"
   },
   ABROAD: {
     meaning: "往国外；到室外；到处",
-    level: "advanced",
+    level: "intermediate",
     rank: 1883,
     source: "NGSL"
   },
   SOUL: {
     meaning: "灵魂；心灵；精神",
-    level: "advanced",
+    level: "intermediate",
     rank: 1884,
     source: "NGSL"
   },
   CAPABLE: {
     meaning: "a. 有能力的；能的；能干的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1885,
     source: "NGSL"
   },
   DEFEAT: {
     meaning: "败北；失败；击败",
-    level: "advanced",
+    level: "intermediate",
     rank: 1886,
     source: "NGSL"
   },
   PRESIDENTIAL: {
     meaning: "a. 总统制的；总统的；首长的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1887,
     source: "NGSL"
   },
   PERFECTLY: {
     meaning: "完全地；无瑕疵地；完整地",
-    level: "advanced",
+    level: "intermediate",
     rank: 1888,
     source: "NGSL"
   },
   PROUD: {
     meaning: "a. 骄傲的；自大的；自豪的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1890,
     source: "NGSL"
   },
   EMERGENCY: {
     meaning: "紧急状况；紧急事件；紧急需要",
-    level: "advanced",
+    level: "intermediate",
     rank: 1891,
     source: "NGSL"
   },
   EDUCATIONAL: {
     meaning: "a. 教育的；教育性的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1892,
     source: "NGSL"
   },
   DISTINGUISH: {
     meaning: "区别；辨别",
-    level: "advanced",
+    level: "intermediate",
     rank: 1893,
     source: "NGSL"
   },
   SUBSTANTIAL: {
     meaning: "重要材料(或事物)；有实际价值的东西；a. 实质上的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1894,
     source: "NGSL"
   },
   NEARBY: {
     meaning: "a. 附近的；近旁的；在附近",
-    level: "advanced",
+    level: "intermediate",
     rank: 1895,
     source: "NGSL"
   },
   MANUFACTURER: {
     meaning: "制造业者；厂商；[经] 制造人",
-    level: "advanced",
+    level: "intermediate",
     rank: 1896,
     source: "NGSL"
   },
   SLIDE: {
     meaning: "滑；滑道；山崩",
-    level: "advanced",
+    level: "intermediate",
     rank: 1897,
     source: "NGSL"
   },
   VALUABLE: {
     meaning: "a. 有价值的；贵重的；宝贵的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1898,
     source: "NGSL"
   },
   PERSONALLY: {
     meaning: "亲自地；个别地；当面",
-    level: "advanced",
+    level: "intermediate",
     rank: 1899,
     source: "NGSL"
   },
   BREAST: {
     meaning: "胸部；乳房；胸怀",
-    level: "advanced",
+    level: "intermediate",
     rank: 1900,
     source: "NGSL"
   },
   COPE: {
     meaning: "竞争；应付；长袍",
-    level: "advanced",
+    level: "intermediate",
     rank: 1901,
     source: "NGSL"
   },
   APPROXIMATELY: {
     meaning: "大约；大致；近于",
-    level: "advanced",
+    level: "intermediate",
     rank: 1902,
     source: "NGSL"
   },
   ACCOMMODATION: {
     meaning: "膳宿；预订铺位；适应性调节",
-    level: "advanced",
+    level: "intermediate",
     rank: 1903,
     source: "NGSL"
   },
   HIGHLIGHT: {
     meaning: "加亮区；精彩场面；加亮",
-    level: "advanced",
+    level: "intermediate",
     rank: 1904,
     source: "NGSL"
   },
   REPORTER: {
     meaning: "记者；报告者；[化] 指示器",
-    level: "advanced",
+    level: "intermediate",
     rank: 1905,
     source: "NGSL"
   },
   CLIMATE: {
     meaning: "气候；社会趋势；气候区",
-    level: "advanced",
+    level: "intermediate",
     rank: 1906,
     source: "NGSL"
   },
   SHIRT: {
     meaning: "衬衫；内衣；汗衫",
-    level: "advanced",
+    level: "intermediate",
     rank: 1907,
     source: "NGSL"
   },
   EXCEPTION: {
     meaning: "例外；除外；异议",
-    level: "advanced",
+    level: "intermediate",
     rank: 1908,
     source: "NGSL"
   },
   CORPORATION: {
     meaning: "公司；合作；法人团体",
-    level: "advanced",
+    level: "intermediate",
     rank: 1909,
     source: "NGSL"
   },
   WINNER: {
     meaning: "胜利者；优胜者；[法] 取胜者",
-    level: "advanced",
+    level: "intermediate",
     rank: 1911,
     source: "NGSL"
   },
   ENCOUNTER: {
     meaning: "相会；相遇；遭遇",
-    level: "advanced",
+    level: "intermediate",
     rank: 1912,
     source: "NGSL"
   },
   BROWN: {
     meaning: "褐色；a. 褐色的；(使)变褐色",
-    level: "advanced",
+    level: "basic",
     rank: 1913,
     source: "NGSL"
   },
   BREATHE: {
     meaning: "呼吸；生存；低语",
-    level: "advanced",
+    level: "intermediate",
     rank: 1914,
     source: "NGSL"
   },
   EXCUSE: {
     meaning: "原谅；申辩；做为...的托辞",
-    level: "advanced",
+    level: "intermediate",
     rank: 1915,
     source: "NGSL"
   },
   PARTLY: {
     meaning: "部分地；在一定程度上",
-    level: "advanced",
+    level: "intermediate",
     rank: 1916,
     source: "NGSL"
   },
   TENNIS: {
     meaning: "网球",
-    level: "advanced",
+    level: "intermediate",
     rank: 1917,
     source: "NGSL"
   },
   URBAN: {
     meaning: "a. 都市的；住在都市的；习惯于都市的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1918,
     source: "NGSL"
   },
   CONFUSE: {
     meaning: "使混乱；使狼狈；使困惑",
-    level: "advanced",
+    level: "intermediate",
     rank: 1919,
     source: "NGSL"
   },
   SOUTHERN: {
     meaning: "南方人；男风；a. 向南方的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1920,
     source: "NGSL"
   },
   OUTPUT: {
     meaning: "输出；产品；产量",
-    level: "advanced",
+    level: "intermediate",
     rank: 1921,
     source: "NGSL"
   },
   BEAUTY: {
     meaning: "美；美人",
-    level: "advanced",
+    level: "intermediate",
     rank: 1922,
     source: "NGSL"
   },
   MASSIVE: {
     meaning: "a. 大而重的；宽大的；宏伟的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1923,
     source: "NGSL"
   },
   INSTALL: {
     meaning: "安装；安置；使就职",
-    level: "advanced",
+    level: "intermediate",
     rank: 1924,
     source: "NGSL"
   },
   CALCULATE: {
     meaning: "计算；预测；计划",
-    level: "advanced",
+    level: "intermediate",
     rank: 1925,
     source: "NGSL"
   },
   MOUSE: {
     meaning: "老鼠；胆小羞怯的人；鼠标",
-    level: "advanced",
+    level: "basic",
     rank: 1926,
     source: "NGSL"
   },
   MATHEMATICS: {
     meaning: "数学；[机] 数学",
-    level: "advanced",
+    level: "intermediate",
     rank: 1927,
     source: "NGSL"
   },
   UPPER: {
     meaning: "a. 上面的；较高的；上级的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1928,
     source: "NGSL"
   },
   CREATION: {
     meaning: "创造；创作物；发明",
-    level: "advanced",
+    level: "intermediate",
     rank: 1929,
     source: "NGSL"
   },
   OCCUPY: {
     meaning: "占领；占(时间；空间等)",
-    level: "advanced",
+    level: "intermediate",
     rank: 1930,
     source: "NGSL"
   },
   OUTLINE: {
     meaning: "大纲；轮廓；概要",
-    level: "advanced",
+    level: "intermediate",
     rank: 1931,
     source: "NGSL"
   },
   SUFFICIENT: {
     meaning: "a. 充分的；足够的；[法] 充分的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1932,
     source: "NGSL"
   },
   UPDATE: {
     meaning: "更新；使现代化；更新",
-    level: "advanced",
+    level: "intermediate",
     rank: 1933,
     source: "NGSL"
   },
   LUCK: {
     meaning: "运气；幸运；好运",
-    level: "advanced",
+    level: "intermediate",
     rank: 1934,
     source: "NGSL"
   },
   PRESERVE: {
     meaning: "保护；保持；保存",
-    level: "advanced",
+    level: "intermediate",
     rank: 1935,
     source: "NGSL"
   },
   SPLIT: {
     meaning: "劈开；裂片；裂缝",
-    level: "advanced",
+    level: "intermediate",
     rank: 1936,
     source: "NGSL"
   },
   SWING: {
     meaning: "摇摆；振幅；音律",
-    level: "advanced",
+    level: "intermediate",
     rank: 1937,
     source: "NGSL"
   },
   ILLNESS: {
     meaning: "疾病；恶意；[医] 病",
-    level: "advanced",
+    level: "intermediate",
     rank: 1938,
     source: "NGSL"
   },
   JOURNALIST: {
     meaning: "新闻记者；从事新闻杂志业的人",
-    level: "advanced",
+    level: "intermediate",
     rank: 1939,
     source: "NGSL"
   },
   SUDDEN: {
     meaning: "突然；忽然；a. 突然的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1940,
     source: "NGSL"
   },
   ADVERTISEMENT: {
     meaning: "广告；启事；广告宣传",
-    level: "advanced",
+    level: "intermediate",
     rank: 1941,
     source: "NGSL"
   },
   CONSISTENT: {
     meaning: "a. 一致的；坚持的；并立的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1942,
     source: "NGSL"
   },
   ORIGINALLY: {
     meaning: "本来；原来；最初",
-    level: "advanced",
+    level: "intermediate",
     rank: 1943,
     source: "NGSL"
   },
   ASIDE: {
     meaning: "小声说的话；旁白；在一边",
-    level: "advanced",
+    level: "intermediate",
     rank: 1944,
     source: "NGSL"
   },
   COMFORT: {
     meaning: "舒适；安慰；安慰者",
-    level: "advanced",
+    level: "intermediate",
     rank: 1945,
     source: "NGSL"
   },
   SECONDLY: {
     meaning: "第二；其次",
-    level: "advanced",
+    level: "intermediate",
     rank: 1946,
     source: "NGSL"
   },
   SEVERE: {
     meaning: "a. 严格的；尖锐的；严肃的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1947,
     source: "NGSL"
   },
   GENE: {
     meaning: "基因；[化] 基因(遗传因子)",
-    level: "advanced",
+    level: "intermediate",
     rank: 1948,
     source: "NGSL"
   },
   PROSPECT: {
     meaning: "景色；展望；勘探",
-    level: "advanced",
+    level: "intermediate",
     rank: 1949,
     source: "NGSL"
   },
   SNOW: {
     meaning: "雪；积雪；下雪",
-    level: "advanced",
+    level: "basic",
     rank: 1950,
     source: "NGSL"
   },
   PLOT: {
     meaning: "小块土地；地区图；图",
-    level: "advanced",
+    level: "intermediate",
     rank: 1951,
     source: "NGSL"
   },
   NECK: {
     meaning: "脖子；衣领；颈",
-    level: "advanced",
+    level: "intermediate",
     rank: 1952,
     source: "NGSL"
   },
   PRIMARILY: {
     meaning: "主要地；首先地",
-    level: "advanced",
+    level: "intermediate",
     rank: 1954,
     source: "NGSL"
   },
   INTEGRATE: {
     meaning: "综合；使完整；使成整体",
-    level: "advanced",
+    level: "intermediate",
     rank: 1955,
     source: "NGSL"
   },
   CRITICISM: {
     meaning: "批评；评论；非难",
-    level: "advanced",
+    level: "intermediate",
     rank: 1956,
     source: "NGSL"
   },
   CONVENTION: {
     meaning: "大会；协定；惯例",
-    level: "advanced",
+    level: "intermediate",
     rank: 1957,
     source: "NGSL"
   },
   BET: {
     meaning: "打赌；赌注；打赌",
-    level: "advanced",
+    level: "intermediate",
     rank: 1958,
     source: "NGSL"
   },
   SEQUENCE: {
     meaning: "序列；续发事件；顺序",
-    level: "advanced",
+    level: "intermediate",
     rank: 1960,
     source: "NGSL"
   },
   PLAIN: {
     meaning: "平原；草原；朴实无华的东西",
-    level: "advanced",
+    level: "intermediate",
     rank: 1961,
     source: "NGSL"
   },
   VOLUNTEER: {
     meaning: "志愿者；a. 志愿的；自愿",
-    level: "advanced",
+    level: "intermediate",
     rank: 1962,
     source: "NGSL"
   },
   RURAL: {
     meaning: "a. 乡下的；田园的；乡村风味的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1963,
     source: "NGSL"
   },
   CALM: {
     meaning: "平稳；风平浪静；a. 平静的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1964,
     source: "NGSL"
   },
   ABANDON: {
     meaning: "放弃；抛弃；遗弃",
-    level: "advanced",
+    level: "intermediate",
     rank: 1965,
     source: "NGSL"
   },
   EXAMINATION: {
     meaning: "考试；测验；审查",
-    level: "advanced",
+    level: "intermediate",
     rank: 1966,
     source: "NGSL"
   },
   SILENCE: {
     meaning: "沉默；无声；静寂",
-    level: "advanced",
+    level: "intermediate",
     rank: 1967,
     source: "NGSL"
   },
   RAPIDLY: {
     meaning: "飞快地；迅速地；赶紧地",
-    level: "advanced",
+    level: "intermediate",
     rank: 1968,
     source: "NGSL"
   },
   EFFICIENT: {
     meaning: "a. 有效率的；能干的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1969,
     source: "NGSL"
   },
   REVOLUTION: {
     meaning: "革命；大变革；旋转",
-    level: "advanced",
+    level: "intermediate",
     rank: 1970,
     source: "NGSL"
   },
   DELIGHT: {
     meaning: "高兴；愉快；使高兴",
-    level: "advanced",
+    level: "intermediate",
     rank: 1971,
     source: "NGSL"
   },
   SPELL: {
     meaning: "符咒；魅力；轮值",
-    level: "advanced",
+    level: "intermediate",
     rank: 1972,
     source: "NGSL"
   },
   LEAN: {
     meaning: "瘦肉；倾斜；倾斜度",
-    level: "advanced",
+    level: "intermediate",
     rank: 1974,
     source: "NGSL"
   },
   DRAMATIC: {
     meaning: "a. 戏剧性的；生动的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1975,
     source: "NGSL"
   },
   DIFFER: {
     meaning: "不一致；不同；[机] 差异",
-    level: "advanced",
+    level: "intermediate",
     rank: 1976,
     source: "NGSL"
   },
   GRATEFUL: {
     meaning: "a. 感谢的；感激的；令人快意的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1977,
     source: "NGSL"
   },
   PROTEIN: {
     meaning: "蛋白质；a. 蛋白质的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1978,
     source: "NGSL"
   },
   BIKE: {
     meaning: "自行车；脚踏车",
-    level: "advanced",
+    level: "basic",
     rank: 1979,
     source: "NGSL"
   },
   DISTRIBUTE: {
     meaning: "分配；散布；分发",
-    level: "advanced",
+    level: "intermediate",
     rank: 1980,
     source: "NGSL"
   },
   INTELLECTUAL: {
     meaning: "有知识者；知识分子；凭理智做事者",
-    level: "advanced",
+    level: "intermediate",
     rank: 1981,
     source: "NGSL"
   },
   DERIVE: {
     meaning: "得自；起源",
-    level: "advanced",
+    level: "intermediate",
     rank: 1982,
     source: "NGSL"
   },
   CRUCIAL: {
     meaning: "a. 决定性的；重要的；严厉的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1983,
     source: "NGSL"
   },
   UNEMPLOYMENT: {
     meaning: "失业；失业人数；[经] 失业",
-    level: "advanced",
+    level: "intermediate",
     rank: 1984,
     source: "NGSL"
   },
   WHEEL: {
     meaning: "轮子；车轮；轮",
-    level: "advanced",
+    level: "intermediate",
     rank: 1985,
     source: "NGSL"
   },
   CROP: {
     meaning: "农作物；产量；平头",
-    level: "advanced",
+    level: "intermediate",
     rank: 1986,
     source: "NGSL"
   },
   MINORITY: {
     meaning: "少数；未成年；少数民族",
-    level: "advanced",
+    level: "intermediate",
     rank: 1987,
     source: "NGSL"
   },
   ORIGIN: {
     meaning: "起源；起因；出身",
-    level: "advanced",
+    level: "intermediate",
     rank: 1988,
     source: "NGSL"
   },
   INTERPRETATION: {
     meaning: "解释；演出；翻译",
-    level: "advanced",
+    level: "intermediate",
     rank: 1989,
     source: "NGSL"
   },
   GENTLEMAN: {
     meaning: "绅士；先生",
-    level: "advanced",
+    level: "intermediate",
     rank: 1990,
     source: "NGSL"
   },
   LANDSCAPE: {
     meaning: "风景；山水；风景画",
-    level: "advanced",
+    level: "intermediate",
     rank: 1992,
     source: "NGSL"
   },
   EDUCATE: {
     meaning: "教育；培养；训练",
-    level: "advanced",
+    level: "intermediate",
     rank: 1993,
     source: "NGSL"
   },
   TOY: {
     meaning: "玩具；小玩艺儿；小型的东西",
-    level: "advanced",
+    level: "basic",
     rank: 1994,
     source: "NGSL"
   },
   FAULT: {
     meaning: "过错；故障；毛病",
-    level: "advanced",
+    level: "intermediate",
     rank: 1995,
     source: "NGSL"
   },
   EXHIBIT: {
     meaning: "显示；显现；展览品",
-    level: "advanced",
+    level: "intermediate",
     rank: 1996,
     source: "NGSL"
   },
   MINOR: {
     meaning: "未成年人；副修科目；a. 较小的",
-    level: "advanced",
+    level: "intermediate",
     rank: 1997,
     source: "NGSL"
   },
   HUNT: {
     meaning: "狩猎；追捕；搜寻",
-    level: "advanced",
+    level: "intermediate",
     rank: 1998,
     source: "NGSL"
   },
   STORM: {
     meaning: "暴风雨；骚动；风波",
-    level: "advanced",
+    level: "intermediate",
     rank: 1999,
     source: "NGSL"
   },
   THICK: {
     meaning: "a. 厚的；粗壮的；浓的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2000,
     source: "NGSL"
   },
   ACHIEVEMENT: {
     meaning: "完成；成就；功业",
-    level: "advanced",
+    level: "intermediate",
     rank: 2001,
     source: "NGSL"
   },
   NEGOTIATE: {
     meaning: "商议；谈判；交涉",
-    level: "advanced",
+    level: "intermediate",
     rank: 2002,
     source: "NGSL"
   },
   DOMINATE: {
     meaning: "支配；占优势",
-    level: "advanced",
+    level: "intermediate",
     rank: 2003,
     source: "NGSL"
   },
   SUPPLIER: {
     meaning: "供应者；供给国；供应商",
-    level: "advanced",
+    level: "intermediate",
     rank: 2004,
     source: "NGSL"
   },
   TYPICALLY: {
     meaning: "代表性地；作为特色地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2006,
     source: "NGSL"
   },
   PENSION: {
     meaning: "养老金；退休金；津贴",
-    level: "advanced",
+    level: "intermediate",
     rank: 2008,
     source: "NGSL"
   },
   WING: {
     meaning: "翅膀；翼；机翼",
-    level: "advanced",
+    level: "intermediate",
     rank: 2009,
     source: "NGSL"
   },
   ACQUISITION: {
     meaning: "获得；获得物；[经] 收购",
-    level: "advanced",
+    level: "intermediate",
     rank: 2010,
     source: "NGSL"
   },
   LAUGHTER: {
     meaning: "笑；笑声；[医] 笑",
-    level: "advanced",
+    level: "intermediate",
     rank: 2011,
     source: "NGSL"
   },
   DEEPLY: {
     meaning: "深刻地；在深处；深沉地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2012,
     source: "NGSL"
   },
   RECOGNITION: {
     meaning: "赞誉；认得；识别",
-    level: "advanced",
+    level: "intermediate",
     rank: 2013,
     source: "NGSL"
   },
   ELECTRICITY: {
     meaning: "电；电流；电学",
-    level: "advanced",
+    level: "intermediate",
     rank: 2014,
     source: "NGSL"
   },
   ASSISTANCE: {
     meaning: "协助；援助；[经] 援助",
-    level: "advanced",
+    level: "intermediate",
     rank: 2015,
     source: "NGSL"
   },
   ROOF: {
     meaning: "屋顶；室顶；给...盖屋顶",
-    level: "advanced",
+    level: "intermediate",
     rank: 2016,
     source: "NGSL"
   },
   RETIREMENT: {
     meaning: "退休；隐居；撤退",
-    level: "advanced",
+    level: "intermediate",
     rank: 2017,
     source: "NGSL"
   },
   RESPECTIVELY: {
     meaning: "各自地；独自地；个别地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2018,
     source: "NGSL"
   },
   VARIATION: {
     meaning: "变更；变化；变种",
-    level: "advanced",
+    level: "intermediate",
     rank: 2019,
     source: "NGSL"
   },
   ULTIMATELY: {
     meaning: "最后；最终；[法] 最后",
-    level: "advanced",
+    level: "intermediate",
     rank: 2020,
     source: "NGSL"
   },
   PROOF: {
     meaning: "证据；证明；试验",
-    level: "advanced",
+    level: "intermediate",
     rank: 2021,
     source: "NGSL"
   },
   SOIL: {
     meaning: "土壤；土地；国家",
-    level: "advanced",
+    level: "intermediate",
     rank: 2022,
     source: "NGSL"
   },
   LAYER: {
     meaning: "层；产卵鸡；放置者",
-    level: "advanced",
+    level: "intermediate",
     rank: 2024,
     source: "NGSL"
   },
   UPSET: {
     meaning: "a. 弄翻的；混乱的；心烦的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2025,
     source: "NGSL"
   },
   TOOTH: {
     meaning: "牙齿；齿状物；爱好",
-    level: "advanced",
+    level: "basic",
     rank: 2026,
     source: "NGSL"
   },
   REPRESENTATION: {
     meaning: "表示法；表现；陈述",
-    level: "advanced",
+    level: "intermediate",
     rank: 2027,
     source: "NGSL"
   },
   PREPARATION: {
     meaning: "准备；预备；预习",
-    level: "advanced",
+    level: "intermediate",
     rank: 2028,
     source: "NGSL"
   },
   DISPUTE: {
     meaning: "争论；争论",
-    level: "advanced",
+    level: "intermediate",
     rank: 2029,
     source: "NGSL"
   },
   EMPHASIS: {
     meaning: "强调；加强；重点",
-    level: "advanced",
+    level: "intermediate",
     rank: 2031,
     source: "NGSL"
   },
   EDITION: {
     meaning: "版本；版；翻版",
-    level: "advanced",
+    level: "intermediate",
     rank: 2032,
     source: "NGSL"
   },
   SILVER: {
     meaning: "银；银币；银器",
-    level: "advanced",
+    level: "basic",
     rank: 2033,
     source: "NGSL"
   },
   ENTERTAINMENT: {
     meaning: "娱乐；款待；娱乐表演",
-    level: "advanced",
+    level: "intermediate",
     rank: 2034,
     source: "NGSL"
   },
   HONEST: {
     meaning: "a. 诚实的；坦直的；可靠的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2035,
     source: "NGSL"
   },
   UNDERTAKE: {
     meaning: "试图；从事；保证",
-    level: "advanced",
+    level: "intermediate",
     rank: 2036,
     source: "NGSL"
   },
   RETAIL: {
     meaning: "零售；a. 零售的；零售",
-    level: "advanced",
+    level: "intermediate",
     rank: 2037,
     source: "NGSL"
   },
   WIRE: {
     meaning: "电线；电报；电信",
-    level: "advanced",
+    level: "intermediate",
     rank: 2038,
     source: "NGSL"
   },
   UNLIKELY: {
     meaning: "a. 不太可能的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2039,
     source: "NGSL"
   },
   GAY: {
     meaning: "a. 欢快的；艳丽的；快乐的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2040,
     source: "NGSL"
   },
   PUBLICATION: {
     meaning: "出版物；出版；公布",
-    level: "advanced",
+    level: "intermediate",
     rank: 2041,
     source: "NGSL"
   },
   UNKNOWN: {
     meaning: "a. 不知道的；未知的；陌生的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2043,
     source: "NGSL"
   },
   FRAMEWORK: {
     meaning: "结构；骨架；参照标准",
-    level: "advanced",
+    level: "intermediate",
     rank: 2044,
     source: "NGSL"
   },
   ZONE: {
     meaning: "地带；带；地区",
-    level: "advanced",
+    level: "intermediate",
     rank: 2045,
     source: "NGSL"
   },
   RESTRICT: {
     meaning: "限制；限定；约束",
-    level: "advanced",
+    level: "intermediate",
     rank: 2046,
     source: "NGSL"
   },
   TRACE: {
     meaning: "痕迹；踪迹；微量",
-    level: "advanced",
+    level: "intermediate",
     rank: 2047,
     source: "NGSL"
   },
   INCH: {
     meaning: "英寸；身高；小岛",
-    level: "advanced",
+    level: "intermediate",
     rank: 2048,
     source: "NGSL"
   },
   EQUIVALENT: {
     meaning: "同等物；等价物；相等物",
-    level: "advanced",
+    level: "intermediate",
     rank: 2049,
     source: "NGSL"
   },
   SOLID: {
     meaning: "固体；a. 坚硬的；稳固的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2050,
     source: "NGSL"
   },
   ENTERPRISE: {
     meaning: "企业；事业心；进取心",
-    level: "advanced",
+    level: "intermediate",
     rank: 2051,
     source: "NGSL"
   },
   ELDERLY: {
     meaning: "a. 过了中年的；稍老的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2052,
     source: "NGSL"
   },
   OWE: {
     meaning: "亏欠；负...债；归功于",
-    level: "advanced",
+    level: "intermediate",
     rank: 2053,
     source: "NGSL"
   },
   GOVERNOR: {
     meaning: "(美)州长；(英)总督；统治者",
-    level: "advanced",
+    level: "intermediate",
     rank: 2054,
     source: "NGSL"
   },
   UNIFORM: {
     meaning: "制服；a. 统一的；一律的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2055,
     source: "NGSL"
   },
   PORT: {
     meaning: "港口；埠；舱门",
-    level: "advanced",
+    level: "intermediate",
     rank: 2056,
     source: "NGSL"
   },
   PITCH: {
     meaning: "程度；坡度；顶点",
-    level: "advanced",
+    level: "intermediate",
     rank: 2057,
     source: "NGSL"
   },
   ARRIVAL: {
     meaning: "到达；抵达；到达者",
-    level: "advanced",
+    level: "intermediate",
     rank: 2058,
     source: "NGSL"
   },
   CONTEMPORARY: {
     meaning: "同时代的人；a. 同时代的；属于同一时期的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2059,
     source: "NGSL"
   },
   GATE: {
     meaning: "门；牌楼；大门",
-    level: "advanced",
+    level: "intermediate",
     rank: 2060,
     source: "NGSL"
   },
   EASE: {
     meaning: "安乐；安逸；悠闲",
-    level: "advanced",
+    level: "intermediate",
     rank: 2061,
     source: "NGSL"
   },
   BEER: {
     meaning: "啤酒；[化] 啤酒",
-    level: "advanced",
+    level: "intermediate",
     rank: 2062,
     source: "NGSL"
   },
   SPECIALIST: {
     meaning: "专门医师；专家；a. 专业的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2063,
     source: "NGSL"
   },
   ASSURE: {
     meaning: "保证；使确信；弄清楚",
-    level: "advanced",
+    level: "intermediate",
     rank: 2064,
     source: "NGSL"
   },
   PROFILE: {
     meaning: "侧面；轮廓；传略",
-    level: "advanced",
+    level: "intermediate",
     rank: 2065,
     source: "NGSL"
   },
   MOOD: {
     meaning: "心情；气氛；生气",
-    level: "advanced",
+    level: "intermediate",
     rank: 2066,
     source: "NGSL"
   },
   EPISODE: {
     meaning: "插曲；插话；有趣的事件",
-    level: "advanced",
+    level: "intermediate",
     rank: 2067,
     source: "NGSL"
   },
   CRACK: {
     meaning: "裂缝；爆裂声；(使)爆裂",
-    level: "advanced",
+    level: "intermediate",
     rank: 2068,
     source: "NGSL"
   },
   NUMEROUS: {
     meaning: "a. 很多的；数目众多的；多数的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2069,
     source: "NGSL"
   },
   SUBMIT: {
     meaning: "使服从；使受到；委托",
-    level: "advanced",
+    level: "intermediate",
     rank: 2070,
     source: "NGSL"
   },
   SYMPTOM: {
     meaning: "症状；征候；征兆",
-    level: "advanced",
+    level: "intermediate",
     rank: 2071,
     source: "NGSL"
   },
   VIRTUALLY: {
     meaning: "事实上",
-    level: "advanced",
+    level: "intermediate",
     rank: 2072,
     source: "NGSL"
   },
   ERA: {
     meaning: "时代；纪元；时期",
-    level: "advanced",
+    level: "intermediate",
     rank: 2073,
     source: "NGSL"
   },
   COVERAGE: {
     meaning: "覆盖的范围；保险总额；新闻报导",
-    level: "advanced",
+    level: "intermediate",
     rank: 2074,
     source: "NGSL"
   },
   TENSION: {
     meaning: "紧张；不安；拉紧",
-    level: "advanced",
+    level: "intermediate",
     rank: 2075,
     source: "NGSL"
   },
   CABLE: {
     meaning: "电缆；海底电报；缆",
-    level: "advanced",
+    level: "intermediate",
     rank: 2076,
     source: "NGSL"
   },
   SENSITIVE: {
     meaning: "a. 敏感的；易感的；灵敏的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2077,
     source: "NGSL"
   },
   NERVOUS: {
     meaning: "a. 神经紧张的；不安的；神经的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2078,
     source: "NGSL"
   },
   INPUT: {
     meaning: "输入；输入电路；输入",
-    level: "advanced",
+    level: "intermediate",
     rank: 2079,
     source: "NGSL"
   },
   ISOLATE: {
     meaning: "使隔离；使孤立；使绝缘",
-    level: "advanced",
+    level: "intermediate",
     rank: 2080,
     source: "NGSL"
   },
   PRISONER: {
     meaning: "囚犯；犯人；战俘",
-    level: "advanced",
+    level: "intermediate",
     rank: 2081,
     source: "NGSL"
   },
   ELIMINATE: {
     meaning: "除去；排除；剔除",
-    level: "advanced",
+    level: "intermediate",
     rank: 2082,
     source: "NGSL"
   },
   TIGHT: {
     meaning: "a. 紧的；密封的；吝啬的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2083,
     source: "NGSL"
   },
   WET: {
     meaning: "湿气；潮湿；水分",
-    level: "advanced",
+    level: "intermediate",
     rank: 2084,
     source: "NGSL"
   },
   SECONDARY: {
     meaning: "a. 中级的；中等的；次要的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2085,
     source: "NGSL"
   },
   WELFARE: {
     meaning: "福利；安宁；幸福",
-    level: "advanced",
+    level: "intermediate",
     rank: 2086,
     source: "NGSL"
   },
   RECRUIT: {
     meaning: "新兵；新手；新会员",
-    level: "advanced",
+    level: "intermediate",
     rank: 2087,
     source: "NGSL"
   },
   EXCLUDE: {
     meaning: "除外；排除；排斥",
-    level: "advanced",
+    level: "intermediate",
     rank: 2088,
     source: "NGSL"
   },
   STRING: {
     meaning: "线；细绳；一串",
-    level: "advanced",
+    level: "intermediate",
     rank: 2089,
     source: "NGSL"
   },
   CLOUD: {
     meaning: "云；阴暗；烟雾",
-    level: "advanced",
+    level: "basic",
     rank: 2090,
     source: "NGSL"
   },
   PERSUADE: {
     meaning: "劝；使相信；恳求",
-    level: "advanced",
+    level: "intermediate",
     rank: 2091,
     source: "NGSL"
   },
   INSPIRE: {
     meaning: "使感动；激发；启示",
-    level: "advanced",
+    level: "intermediate",
     rank: 2092,
     source: "NGSL"
   },
   GRAND: {
     meaning: "a. 庄重的；壮观的；显赫的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2093,
     source: "NGSL"
   },
   HENCE: {
     meaning: "因此；从此",
-    level: "advanced",
+    level: "intermediate",
     rank: 2094,
     source: "NGSL"
   },
   CREW: {
     meaning: "全体人员；一群人；全体队员",
-    level: "advanced",
+    level: "intermediate",
     rank: 2095,
     source: "NGSL"
   },
   PHENOMENON: {
     meaning: "现象；迹象；表现",
-    level: "advanced",
+    level: "intermediate",
     rank: 2096,
     source: "NGSL"
   },
   PUPIL: {
     meaning: "学生；门生；未成年人",
-    level: "advanced",
+    level: "intermediate",
     rank: 2097,
     source: "NGSL"
   },
   FALSE: {
     meaning: "a. 错误的；虚伪的；假的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2098,
     source: "NGSL"
   },
   ASSIST: {
     meaning: "帮助；协助；帮助",
-    level: "advanced",
+    level: "intermediate",
     rank: 2099,
     source: "NGSL"
   },
   RESTORE: {
     meaning: "回复；恢复；归还",
-    level: "advanced",
+    level: "intermediate",
     rank: 2100,
     source: "NGSL"
   },
   FORMULA: {
     meaning: "客套语；公式；准则",
-    level: "advanced",
+    level: "intermediate",
     rank: 2101,
     source: "NGSL"
   },
   ALTER: {
     meaning: "改变",
-    level: "advanced",
+    level: "intermediate",
     rank: 2102,
     source: "NGSL"
   },
   PERCEIVE: {
     meaning: "感觉；认知；理解",
-    level: "advanced",
+    level: "intermediate",
     rank: 2103,
     source: "NGSL"
   },
   ROUTINE: {
     meaning: "常规；日常工作；惯例",
-    level: "advanced",
+    level: "intermediate",
     rank: 2104,
     source: "NGSL"
   },
   SINK: {
     meaning: "藏垢的场所；沟渠；污水槽",
-    level: "advanced",
+    level: "intermediate",
     rank: 2105,
     source: "NGSL"
   },
   STARE: {
     meaning: "注视；凝视；瞪视",
-    level: "advanced",
+    level: "intermediate",
     rank: 2106,
     source: "NGSL"
   },
   ANYMORE: {
     meaning: "再也不；不再",
-    level: "advanced",
+    level: "intermediate",
     rank: 2107,
     source: "NGSL"
   },
   HERO: {
     meaning: "英雄；超越常人者；男主角",
-    level: "advanced",
+    level: "intermediate",
     rank: 2108,
     source: "NGSL"
   },
   SUPPORTER: {
     meaning: "支持者；后盾；迫随者",
-    level: "advanced",
+    level: "intermediate",
     rank: 2109,
     source: "NGSL"
   },
   STEADY: {
     meaning: "a. 稳定的；不动摇的；沉着的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2111,
     source: "NGSL"
   },
   TRUCK: {
     meaning: "卡车；货车；对...进行交易",
-    level: "advanced",
+    level: "intermediate",
     rank: 2113,
     source: "NGSL"
   },
   NOSE: {
     meaning: "鼻子；突出部分；嗅觉",
-    level: "advanced",
+    level: "basic",
     rank: 2114,
     source: "NGSL"
   },
   BESIDE: {
     meaning: "在旁边",
-    level: "advanced",
+    level: "intermediate",
     rank: 2115,
     source: "NGSL"
   },
   SAIL: {
     meaning: "帆；篷；帆船",
-    level: "advanced",
+    level: "intermediate",
     rank: 2116,
     source: "NGSL"
   },
   DISASTER: {
     meaning: "灾祸；不幸；彻底失败",
-    level: "advanced",
+    level: "intermediate",
     rank: 2117,
     source: "NGSL"
   },
   PACE: {
     meaning: "速度；步调；步法",
-    level: "advanced",
+    level: "intermediate",
     rank: 2118,
     source: "NGSL"
   },
   HEAVILY: {
     meaning: "很重地；严重地；难以忍受地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2119,
     source: "NGSL"
   },
   DEVOTE: {
     meaning: "投入于；献身",
-    level: "advanced",
+    level: "intermediate",
     rank: 2120,
     source: "NGSL"
   },
   TERRORIST: {
     meaning: "恐怖分子；[法] 恐怖份子；恐怖主义",
-    level: "advanced",
+    level: "intermediate",
     rank: 2121,
     source: "NGSL"
   },
   JUSTIFY: {
     meaning: "替...辩护；证明；证明合法",
-    level: "advanced",
+    level: "intermediate",
     rank: 2122,
     source: "NGSL"
   },
   FASCINATE: {
     meaning: "令人入神；使着迷；入迷",
-    level: "advanced",
+    level: "intermediate",
     rank: 2124,
     source: "NGSL"
   },
   EXTERNAL: {
     meaning: "外部；外面；a. 外部的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2125,
     source: "NGSL"
   },
   WHENEVER: {
     meaning: "每当；不论何时；每逢",
-    level: "advanced",
+    level: "intermediate",
     rank: 2127,
     source: "NGSL"
   },
   DEPRESSION: {
     meaning: "不景气；消沉；沮丧",
-    level: "advanced",
+    level: "intermediate",
     rank: 2128,
     source: "NGSL"
   },
   GUILTY: {
     meaning: "a. 犯罪的；有过失的；自觉有错的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2129,
     source: "NGSL"
   },
   UNDERLIE: {
     meaning: "位于...之下；成为...的基础",
-    level: "advanced",
+    level: "intermediate",
     rank: 2130,
     source: "NGSL"
   },
   MOM: {
     meaning: "妈妈",
-    level: "advanced",
+    level: "basic",
     rank: 2131,
     source: "NGSL"
   },
   DISTINCTION: {
     meaning: "区别",
-    level: "advanced",
+    level: "intermediate",
     rank: 2132,
     source: "NGSL"
   },
   SATISFACTION: {
     meaning: "满足；满意；快事",
-    level: "advanced",
+    level: "intermediate",
     rank: 2133,
     source: "NGSL"
   },
   INCORPORATE: {
     meaning: "a. 合并的；组成公司的；一体化的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2134,
     source: "NGSL"
   },
   POUR: {
     meaning: "流出；倾泻；骤雨",
-    level: "advanced",
+    level: "intermediate",
     rank: 2135,
     source: "NGSL"
   },
   SWEEP: {
     meaning: "扫除；打扫；肃清",
-    level: "advanced",
+    level: "intermediate",
     rank: 2136,
     source: "NGSL"
   },
   OBLIGATION: {
     meaning: "义务；责任；约束",
-    level: "advanced",
+    level: "intermediate",
     rank: 2137,
     source: "NGSL"
   },
   SIR: {
     meaning: "先生；阁下",
-    level: "advanced",
+    level: "intermediate",
     rank: 2138,
     source: "NGSL"
   },
   EVALUATE: {
     meaning: "评估；评价；赋值",
-    level: "advanced",
+    level: "intermediate",
     rank: 2139,
     source: "NGSL"
   },
   ANGER: {
     meaning: "忿怒；激怒；使发怒",
-    level: "advanced",
+    level: "intermediate",
     rank: 2140,
     source: "NGSL"
   },
   PUB: {
     meaning: "酒馆；客栈",
-    level: "advanced",
+    level: "intermediate",
     rank: 2141,
     source: "NGSL"
   },
   PERCEPTION: {
     meaning: "知觉；感觉；领悟力",
-    level: "advanced",
+    level: "intermediate",
     rank: 2142,
     source: "NGSL"
   },
   NATURALLY: {
     meaning: "自然地；以自然力；天生地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2143,
     source: "NGSL"
   },
   CURRENCY: {
     meaning: "货币；通货；流通",
-    level: "advanced",
+    level: "intermediate",
     rank: 2144,
     source: "NGSL"
   },
   DATABASE: {
     meaning: "数据库；[计] 数据库",
-    level: "advanced",
+    level: "intermediate",
     rank: 2145,
     source: "NGSL"
   },
   INITIALLY: {
     meaning: "最初；开头",
-    level: "advanced",
+    level: "intermediate",
     rank: 2146,
     source: "NGSL"
   },
   TERRITORY: {
     meaning: "领土；领地；版图",
-    level: "advanced",
+    level: "intermediate",
     rank: 2147,
     source: "NGSL"
   },
   STREAM: {
     meaning: "水流；小河；流出",
-    level: "advanced",
+    level: "intermediate",
     rank: 2148,
     source: "NGSL"
   },
   RARELY: {
     meaning: "很少地；罕有地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2149,
     source: "NGSL"
   },
   HEIGHT: {
     meaning: "高度；海拔；高地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2150,
     source: "NGSL"
   },
   APPARENT: {
     meaning: "a. 清晰可见的；显然的；表面上的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2151,
     source: "NGSL"
   },
   WESTERN: {
     meaning: "西方人；西部片；西部小说",
-    level: "advanced",
+    level: "intermediate",
     rank: 2152,
     source: "NGSL"
   },
   EXPANSION: {
     meaning: "扩充；开展；膨胀",
-    level: "advanced",
+    level: "intermediate",
     rank: 2153,
     source: "NGSL"
   },
   CONSTANTLY: {
     meaning: "不变地；不断地；时常地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2154,
     source: "NGSL"
   },
   MUSCLE: {
     meaning: "肌肉；臂力；[医] 肌",
-    level: "advanced",
+    level: "intermediate",
     rank: 2155,
     source: "NGSL"
   },
   SCARE: {
     meaning: "惊吓；恐慌；惊吓",
-    level: "advanced",
+    level: "intermediate",
     rank: 2156,
     source: "NGSL"
   },
   BADLY: {
     meaning: "严重地；恶劣地；极度地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2157,
     source: "NGSL"
   },
   EVERYDAY: {
     meaning: "a. 每天的；日常的；平常的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2158,
     source: "NGSL"
   },
   BOUNDARY: {
     meaning: "边界；分界线；[计] 边界",
-    level: "advanced",
+    level: "intermediate",
     rank: 2159,
     source: "NGSL"
   },
   RATIO: {
     meaning: "比；比率；[医] 比",
-    level: "advanced",
+    level: "intermediate",
     rank: 2160,
     source: "NGSL"
   },
   ESSAY: {
     meaning: "随笔；短文；评论",
-    level: "advanced",
+    level: "intermediate",
     rank: 2161,
     source: "NGSL"
   },
   SCREAM: {
     meaning: "尖叫声；尖叫；大笑",
-    level: "advanced",
+    level: "intermediate",
     rank: 2162,
     source: "NGSL"
   },
   WITHDRAW: {
     meaning: "撤回；取回；撤消",
-    level: "advanced",
+    level: "intermediate",
     rank: 2163,
     source: "NGSL"
   },
   POLLUTION: {
     meaning: "污染；玷污；[化] 污染",
-    level: "advanced",
+    level: "intermediate",
     rank: 2164,
     source: "NGSL"
   },
   DISORDER: {
     meaning: "杂乱；混乱；扰乱",
-    level: "advanced",
+    level: "intermediate",
     rank: 2165,
     source: "NGSL"
   },
   FURNITURE: {
     meaning: "家具；帆具",
-    level: "advanced",
+    level: "intermediate",
     rank: 2166,
     source: "NGSL"
   },
   SYMBOL: {
     meaning: "符号；象征；代号",
-    level: "advanced",
+    level: "intermediate",
     rank: 2167,
     source: "NGSL"
   },
   APARTMENT: {
     meaning: "房间；公寓",
-    level: "advanced",
+    level: "intermediate",
     rank: 2168,
     source: "NGSL"
   },
   DEMONSTRATION: {
     meaning: "示范；实证；[医] 示教",
-    level: "advanced",
+    level: "intermediate",
     rank: 2169,
     source: "NGSL"
   },
   ANALYST: {
     meaning: "分析者；精神分析学家；[化] 分析员",
-    level: "advanced",
+    level: "intermediate",
     rank: 2170,
     source: "NGSL"
   },
   PLATFORM: {
     meaning: "站台；月台；讲台",
-    level: "advanced",
+    level: "intermediate",
     rank: 2171,
     source: "NGSL"
   },
   STEEL: {
     meaning: "钢；钢制品；钢铁",
-    level: "advanced",
+    level: "intermediate",
     rank: 2172,
     source: "NGSL"
   },
   CAKE: {
     meaning: "蛋糕；块；饼",
-    level: "advanced",
+    level: "basic",
     rank: 2173,
     source: "NGSL"
   },
   TRANSFORM: {
     meaning: "使转换；改变；改造",
-    level: "advanced",
+    level: "intermediate",
     rank: 2174,
     source: "NGSL"
   },
   WOUND: {
     meaning: "创伤；伤口；伤疤",
-    level: "advanced",
+    level: "intermediate",
     rank: 2175,
     source: "NGSL"
   },
   RESTRICTION: {
     meaning: "限制；限定；约束",
-    level: "advanced",
+    level: "intermediate",
     rank: 2176,
     source: "NGSL"
   },
   FOUNDATION: {
     meaning: "基础；根据；建立",
-    level: "advanced",
+    level: "intermediate",
     rank: 2177,
     source: "NGSL"
   },
   DESIGNER: {
     meaning: "设计者；谋划者；制图者",
-    level: "advanced",
+    level: "intermediate",
     rank: 2178,
     source: "NGSL"
   },
   STRAIN: {
     meaning: "紧张；拉紧；张力",
-    level: "advanced",
+    level: "intermediate",
     rank: 2179,
     source: "NGSL"
   },
   INNOVATION: {
     meaning: "改革；创新；[法] 创新",
-    level: "advanced",
+    level: "intermediate",
     rank: 2180,
     source: "NGSL"
   },
   ALBUM: {
     meaning: "粘贴簿；唱片套；[医] 白色物",
-    level: "advanced",
+    level: "intermediate",
     rank: 2181,
     source: "NGSL"
   },
   SINGER: {
     meaning: "歌手",
-    level: "advanced",
+    level: "intermediate",
     rank: 2182,
     source: "NGSL"
   },
   TRAIL: {
     meaning: "踪迹；痕迹；一串",
-    level: "advanced",
+    level: "intermediate",
     rank: 2183,
     source: "NGSL"
   },
   TRAP: {
     meaning: "圈套；陷阱；诡计",
-    level: "advanced",
+    level: "intermediate",
     rank: 2184,
     source: "NGSL"
   },
   LOOSE: {
     meaning: "发射；放任；放纵",
-    level: "advanced",
+    level: "intermediate",
     rank: 2185,
     source: "NGSL"
   },
   EXTENSION: {
     meaning: "延长；扩充；范围",
-    level: "advanced",
+    level: "intermediate",
     rank: 2186,
     source: "NGSL"
   },
   WEALTH: {
     meaning: "财富；资源；财产",
-    level: "advanced",
+    level: "intermediate",
     rank: 2187,
     source: "NGSL"
   },
   GRADUALLY: {
     meaning: "逐渐地",
-    level: "advanced",
+    level: "intermediate",
     rank: 2188,
     source: "NGSL"
   },
   TANK: {
     meaning: "槽；箱；柜",
-    level: "advanced",
+    level: "intermediate",
     rank: 2189,
     source: "NGSL"
   },
   EVIL: {
     meaning: "邪恶；不幸；罪恶",
-    level: "advanced",
+    level: "intermediate",
     rank: 2190,
     source: "NGSL"
   },
   REMARKABLE: {
     meaning: "a. 不平常的；值得注意的；显著的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2191,
     source: "NGSL"
   },
   TUNE: {
     meaning: "歌曲；主旋律；心情",
-    level: "advanced",
+    level: "intermediate",
     rank: 2192,
     source: "NGSL"
   },
   GRASS: {
     meaning: "草；草原；牧场",
-    level: "advanced",
+    level: "basic",
     rank: 2193,
     source: "NGSL"
   },
   INVITATION: {
     meaning: "邀请；请柬；引诱",
-    level: "advanced",
+    level: "intermediate",
     rank: 2194,
     source: "NGSL"
   },
   TRANSITION: {
     meaning: "转变；转换；变迁",
-    level: "advanced",
+    level: "intermediate",
     rank: 2195,
     source: "NGSL"
   },
   FRIGHTEN: {
     meaning: "使惊吓；惊恐",
-    level: "advanced",
+    level: "intermediate",
     rank: 2196,
     source: "NGSL"
   },
   BID: {
     meaning: "出价；命令；吩咐",
-    level: "advanced",
+    level: "intermediate",
     rank: 2197,
     source: "NGSL"
   },
   EXTRAORDINARY: {
     meaning: "a. 非常的；特别的；非凡的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2199,
     source: "NGSL"
   },
   BRILLIANT: {
     meaning: "a. 光辉的；灿烂的；有才气的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2200,
     source: "NGSL"
   },
@@ -13152,7 +13155,7 @@ const DICTIONARY = {
   },
   VEGETABLE: {
     meaning: "蔬菜；植物；无精打采之人",
-    level: "advanced",
+    level: "basic",
     rank: 2216,
     source: "NGSL"
   },
@@ -13260,7 +13263,7 @@ const DICTIONARY = {
   },
   SUGAR: {
     meaning: "糖；糖块；甜言蜜语",
-    level: "advanced",
+    level: "basic",
     rank: 2234,
     source: "NGSL"
   },
@@ -13284,7 +13287,7 @@ const DICTIONARY = {
   },
   PINK: {
     meaning: "粉红色；石竹花；化身",
-    level: "advanced",
+    level: "basic",
     rank: 2238,
     source: "NGSL"
   },
@@ -13320,7 +13323,7 @@ const DICTIONARY = {
   },
   EXAM: {
     meaning: "考试；测验",
-    level: "advanced",
+    level: "basic",
     rank: 2244,
     source: "NGSL"
   },
@@ -13422,7 +13425,7 @@ const DICTIONARY = {
   },
   BREAD: {
     meaning: "面包；生计；食物",
-    level: "advanced",
+    level: "basic",
     rank: 2262,
     source: "NGSL"
   },
@@ -13764,7 +13767,7 @@ const DICTIONARY = {
   },
   PEN: {
     meaning: "钢笔；笔；笔调",
-    level: "advanced",
+    level: "basic",
     rank: 2320,
     source: "NGSL"
   },
@@ -13866,7 +13869,7 @@ const DICTIONARY = {
   },
   CHICKEN: {
     meaning: "小鸡；鸡肉",
-    level: "advanced",
+    level: "basic",
     rank: 2339,
     source: "NGSL"
   },
@@ -13992,7 +13995,7 @@ const DICTIONARY = {
   },
   COUSIN: {
     meaning: "堂兄弟姊妹；表兄弟姊妹；[法] 同辈表亲或堂亲",
-    level: "advanced",
+    level: "basic",
     rank: 2361,
     source: "NGSL"
   },
@@ -14496,7 +14499,7 @@ const DICTIONARY = {
   },
   MARCH: {
     meaning: "三月；进行；行军",
-    level: "advanced",
+    level: "basic",
     rank: 2453,
     source: "NGSL"
   },
@@ -14532,7 +14535,7 @@ const DICTIONARY = {
   },
   SALT: {
     meaning: "盐；风趣；刺激",
-    level: "advanced",
+    level: "basic",
     rank: 2459,
     source: "NGSL"
   },
@@ -14754,7 +14757,7 @@ const DICTIONARY = {
   },
   ORANGE: {
     meaning: "柑橘；桔子；橘色",
-    level: "advanced",
+    level: "basic",
     rank: 2499,
     source: "NGSL"
   },
@@ -14874,7 +14877,7 @@ const DICTIONARY = {
   },
   PIG: {
     meaning: "猪；猪肉；贪婪的人",
-    level: "advanced",
+    level: "basic",
     rank: 2519,
     source: "NGSL"
   },
@@ -15054,7 +15057,7 @@ const DICTIONARY = {
   },
   COW: {
     meaning: "母牛；母兽；威胁",
-    level: "advanced",
+    level: "basic",
     rank: 2551,
     source: "NGSL"
   },
@@ -15300,7 +15303,7 @@ const DICTIONARY = {
   },
   MOON: {
     meaning: "月亮；月球；月光",
-    level: "advanced",
+    level: "basic",
     rank: 2599,
     source: "NGSL"
   },
@@ -15330,7 +15333,7 @@ const DICTIONARY = {
   },
   GRANDMOTHER: {
     meaning: "祖母；女祖先",
-    level: "advanced",
+    level: "basic",
     rank: 2604,
     source: "NGSL"
   },
@@ -15438,7 +15441,7 @@ const DICTIONARY = {
   },
   POTATO: {
     meaning: "马铃薯",
-    level: "advanced",
+    level: "basic",
     rank: 2623,
     source: "NGSL"
   },
@@ -15858,13 +15861,13 @@ const DICTIONARY = {
   },
   UNCLE: {
     meaning: "叔父；伯父；姨丈",
-    level: "advanced",
+    level: "basic",
     rank: 2694,
     source: "NGSL"
   },
   RICE: {
     meaning: "米；米饭；稻",
-    level: "advanced",
+    level: "basic",
     rank: 2695,
     source: "NGSL"
   },
@@ -15936,7 +15939,7 @@ const DICTIONARY = {
   },
   SHEEP: {
     meaning: "羊；胆小者",
-    level: "advanced",
+    level: "basic",
     rank: 2710,
     source: "NGSL"
   },
@@ -15948,7 +15951,7 @@ const DICTIONARY = {
   },
   RAT: {
     meaning: "鼠；卑鄙的人；破坏者",
-    level: "advanced",
+    level: "basic",
     rank: 2712,
     source: "NGSL"
   },
@@ -16320,7 +16323,7 @@ const DICTIONARY = {
   },
   AUNT: {
     meaning: "阿姨；姨妈；舅妈",
-    level: "advanced",
+    level: "basic",
     rank: 2781,
     source: "NGSL"
   },
@@ -16446,7 +16449,7 @@ const DICTIONARY = {
   },
   HELLO: {
     meaning: "interj. 喂；嘿",
-    level: "advanced",
+    level: "basic",
     rank: 2803,
     source: "NGSL"
   },
@@ -16764,7 +16767,7 @@ const DICTIONARY = {
   },
   APPLE: {
     meaning: "苹果；家伙；[医] 苹果",
-    level: "academic",
+    level: "basic",
     rank: null,
     source: "NAWL"
   },
@@ -18552,7 +18555,7 @@ const DICTIONARY = {
   },
   HOMEWORK: {
     meaning: "家庭作业；家里做的工作；[经] 家庭作业",
-    level: "academic",
+    level: "basic",
     rank: null,
     source: "NAWL"
   },
@@ -19290,7 +19293,7 @@ const DICTIONARY = {
   },
   MINUS: {
     meaning: "负号；不足；a. 减的",
-    level: "academic",
+    level: "basic",
     rank: null,
     source: "NAWL"
   },
@@ -19332,7 +19335,7 @@ const DICTIONARY = {
   },
   MONKEY: {
     meaning: "猴子；猿；打桩锤",
-    level: "academic",
+    level: "basic",
     rank: null,
     source: "NAWL"
   },
@@ -20586,7 +20589,7 @@ const DICTIONARY = {
   },
   SNAKE: {
     meaning: "蛇；阴险的人；曲折行进",
-    level: "academic",
+    level: "basic",
     rank: null,
     source: "NAWL"
   },
@@ -21408,109 +21411,109 @@ const DICTIONARY = {
   },
   DRAFT: {
     meaning: "气流；草稿；汇票",
-    level: "advanced",
+    level: "intermediate",
     rank: 1809,
     source: "NGSL+GRE_MASTER"
   },
   IMPLY: {
     meaning: "暗示；意味；[计] 隐含",
-    level: "advanced",
+    level: "intermediate",
     rank: 1818,
     source: "NGSL+GRE_MASTER"
   },
   PRIME: {
     meaning: "最佳部分；初期；全盛期",
-    level: "advanced",
+    level: "intermediate",
     rank: 1838,
     source: "NGSL+GRE_MASTER"
   },
   ENHANCE: {
     meaning: "提高；加强；增加",
-    level: "advanced",
+    level: "intermediate",
     rank: 1889,
     source: "NGSL+GRE_MASTER"
   },
   CHIP: {
     meaning: "屑片；薄片；碎片",
-    level: "advanced",
+    level: "intermediate",
     rank: 1910,
     source: "NGSL+GRE_MASTER"
   },
   RETAIN: {
     meaning: "保持；保有；留住",
-    level: "advanced",
+    level: "intermediate",
     rank: 1959,
     source: "NGSL+GRE_MASTER"
   },
   PREMISE: {
     meaning: "前提；房屋连地基；上述各项",
-    level: "advanced",
+    level: "intermediate",
     rank: 1973,
     source: "NGSL+GRE_MASTER"
   },
   DRAMA: {
     meaning: "戏剧；戏剧艺术",
-    level: "advanced",
+    level: "intermediate",
     rank: 1991,
     source: "NGSL+GRE_MASTER"
   },
   PRIZE: {
     meaning: "奖赏；奖金；奖品",
-    level: "advanced",
+    level: "intermediate",
     rank: 2005,
     source: "NGSL+GRE_MASTER"
   },
   PEER: {
     meaning: "同等的人；匹敌；贵族",
-    level: "advanced",
+    level: "intermediate",
     rank: 2007,
     source: "NGSL+GRE_MASTER"
   },
   SMART: {
     meaning: "a. 聪明的；漂亮的；刺痛的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2023,
     source: "NGSL+GRE_MASTER"
   },
   AGENDA: {
     meaning: "pl. 议程；日常工作事项；[计] 待议事件",
-    level: "advanced",
+    level: "intermediate",
     rank: 2030,
     source: "NGSL+GRE_MASTER"
   },
   SLIGHT: {
     meaning: "轻蔑；怠慢；a. 轻微的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2042,
     source: "NGSL+GRE_MASTER"
   },
   CONVERT: {
     meaning: "皈依者；改变宗教信仰者；使改变信仰",
-    level: "advanced",
+    level: "intermediate",
     rank: 2110,
     source: "NGSL+GRE_MASTER"
   },
   METER: {
     meaning: "米；公尺；仪表",
-    level: "advanced",
+    level: "intermediate",
     rank: 2112,
     source: "NGSL+GRE_MASTER"
   },
   VITAL: {
     meaning: "a. 生命的；重要的；充满活力的",
-    level: "advanced",
+    level: "intermediate",
     rank: 2123,
     source: "NGSL+GRE_MASTER"
   },
   SPARE: {
     meaning: "剩余；备用品；备件",
-    level: "advanced",
+    level: "intermediate",
     rank: 2126,
     source: "NGSL+GRE_MASTER"
   },
   BREED: {
     meaning: "种类；品种；养育",
-    level: "advanced",
+    level: "intermediate",
     rank: 2198,
     source: "NGSL+GRE_MASTER"
   },
@@ -22800,7 +22803,7 @@ const DICTIONARY = {
   },
   AUGUST: {
     meaning: "八月；a. 威严的；令人敬畏的",
-    level: "challenge",
+    level: "basic",
     rank: null,
     source: "GRE_MASTER"
   },
