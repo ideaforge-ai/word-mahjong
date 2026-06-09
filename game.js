@@ -80,6 +80,7 @@ const DIFFICULTY_CONFIG = {
 let draggedTileIndex = null;
 let selectedTileIndex = null;
 let pointerDragState = null;
+let lockedWordGroups = [];
 
 let reviewModeState = {
   active: false,
@@ -132,7 +133,10 @@ const elements = {
   sortBtn: document.getElementById("sortBtn"),
   discardSelectedBtn: document.getElementById("discardSelectedBtn"),
   wordHintBtn: document.getElementById("wordHintBtn"),
+  strategyAssistBtn: document.getElementById("strategyAssistBtn"),
   winCheckBtn: document.getElementById("winCheckBtn"),
+  unlockLastWordBtn: document.getElementById("unlockLastWordBtn"),
+  clearLockedWordsBtn: document.getElementById("clearLockedWordsBtn"),
   wordHintPanel: document.getElementById("wordHintPanel"),
   dictInput: document.getElementById("dictInput"),
   dictSearchBtn: document.getElementById("dictSearchBtn"),
@@ -395,6 +399,7 @@ function dealInitialHands() {
 }
 
 function startGame() {
+  lockedWordGroups = [];
   draggedTileIndex = null;
   selectedTileIndex = null;
   clearCandidateCache();
@@ -449,7 +454,7 @@ function startNextRound() {
     setMessage(getMatchOverText());
     return;
   }
-
+  lockedWordGroups = [];
   draggedTileIndex = null;
   selectedTileIndex = null;
   clearCandidateCache();
@@ -1233,10 +1238,105 @@ function reorderPlayerHandByWords(playerIndex, words) {
   }
 }
 
-function findPossibleWordsFromHand() {
-  const human = gameState.players[0];
+function lockWordToFront(word) {
+  if (!word || gameState.gameOver) return;
 
-  const possibleWords = getCandidateWordsForHand(human.hand)
+  const human = gameState.players[0];
+  const unlockedTiles = getUnlockedHumanHand();
+  const wordTiles = [];
+
+  for (const letter of word) {
+    const tileIndex = unlockedTiles.findIndex(tile => tile.letter === letter);
+
+    if (tileIndex === -1) {
+      setMessage(`剩余字母已经无法组成 ${displayWord(word)}。`);
+      return;
+    }
+
+    wordTiles.push(unlockedTiles.splice(tileIndex, 1)[0]);
+  }
+
+  lockedWordGroups.push({
+    word,
+    tileIds: wordTiles.map(tile => tile.id)
+  });
+
+  const lockedTiles = [];
+
+  lockedWordGroups.forEach(group => {
+    group.tileIds.forEach(tileId => {
+      const tile = human.hand.find(item => item.id === tileId);
+      if (tile) {
+        lockedTiles.push(tile);
+      }
+    });
+  });
+
+  const remainingTiles = human.hand.filter(tile => {
+    return !lockedWordGroups.some(group => group.tileIds.includes(tile.id));
+  });
+
+  human.hand = [...lockedTiles, ...remainingTiles];
+
+  selectedTileIndex = null;
+  draggedTileIndex = null;
+
+  clearWordHints();
+  showWordHints();
+
+  setMessage(`已固定单词 ${displayWord(word)}，剩余字母已重新提示。`);
+  render();
+}
+
+function clearLockedWordGroups() {
+  lockedWordGroups = [];
+  selectedTileIndex = null;
+  draggedTileIndex = null;
+
+  clearWordHints();
+  showWordHints();
+
+  setMessage("已全部解除固定单词。");
+  render();
+}
+
+function unlockLastWordGroup() {
+  if (lockedWordGroups.length === 0) {
+    setMessage("当前没有已固定单词。");
+    return;
+  }
+
+  const removed = lockedWordGroups.pop();
+
+  selectedTileIndex = null;
+  draggedTileIndex = null;
+
+  clearWordHints();
+  showWordHints();
+
+  setMessage(`已解除最后固定单词 ${displayWord(removed.word)}。`);
+  render();
+}
+
+
+function isTileLocked(tile) {
+  return lockedWordGroups.some(group => {
+    return group.tileIds.includes(tile.id);
+  });
+}
+
+function getUnlockedHumanHand() {
+  const human = gameState.players[0];
+  return human.hand.filter(tile => !isTileLocked(tile));
+}
+
+
+function findPossibleWordsFromHand() {
+  const hand = lockedWordGroups.length > 0
+    ? getUnlockedHumanHand()
+    : gameState.players[0].hand;
+
+  const possibleWords = getCandidateWordsForHand(hand)
     .sort((a, b) => {
       const levelDiff = getWordLevelValue(b) - getWordLevelValue(a);
       if (levelDiff !== 0) return levelDiff;
@@ -1250,6 +1350,408 @@ function findPossibleWordsFromHand() {
 
   return possibleWords;
 }
+
+function getUsedTileIdsByWords(hand, words) {
+  const remainingTiles = [...hand];
+  const usedTiles = [];
+
+  words.forEach((word) => {
+    for (const letter of word) {
+      const tileIndex = remainingTiles.findIndex((tile) => tile.letter === letter);
+
+      if (tileIndex !== -1) {
+        usedTiles.push(remainingTiles.splice(tileIndex, 1)[0]);
+      }
+    }
+  });
+
+  return usedTiles.map((tile) => tile.id);
+}
+
+function getRemainingTilesAfterWords(hand, words) {
+  const usedTileIds = new Set(getUsedTileIdsByWords(hand, words));
+  return hand.filter((tile) => !usedTileIds.has(tile.id));
+}
+
+function getBestCompleteCombinationForHand(hand) {
+  if (!hand || hand.length === 0) {
+    return null;
+  }
+
+  const candidateWords = buildCandidateWords(hand);
+  return searchCombinationByCandidates(hand, candidateWords, {
+    requireCore: false
+  });
+}
+
+function estimateReplacementNeededForRemainingTiles(remainingTiles) {
+  if (!remainingTiles || remainingTiles.length === 0) {
+    return {
+      replacementNeeded: 0,
+      exampleCombination: [],
+      note: "剩余字母为空，已经全部成词。"
+    };
+  }
+
+  const remainingLength = remainingTiles.length;
+
+  /*
+    为了兼顾性能，第一版只精确评估 1～5 张剩余字母。
+    你的玩法中，策略辅助通常会把大部分字母先用掉，
+    所以剩余 1～5 张是最常见、也最关键的情况。
+  */
+  if (remainingLength > 5) {
+    const looseWords = getCandidateWordsForHand(remainingTiles);
+
+    return {
+      replacementNeeded: remainingLength,
+      exampleCombination: [],
+      note: looseWords.length > 0
+        ? `剩余 ${remainingLength} 张中仍可组成局部单词，但暂不做完整替代评估。`
+        : `剩余 ${remainingLength} 张，暂不做完整替代评估。`
+    };
+  }
+
+  const originalLetters = remainingTiles.map((tile) => tile.letter);
+  const alphabet = Object.keys(LETTER_DISTRIBUTION);
+
+  function buildVirtualTiles(letters) {
+    return letters.map((letter, index) => ({
+      id: `virtual-${index}-${letter}`,
+      letter
+    }));
+  }
+
+  function testWithReplacementCount(replaceCount) {
+    const positions = [];
+
+    function choosePositions(startIndex, current) {
+      if (current.length === replaceCount) {
+        positions.push([...current]);
+        return;
+      }
+
+      for (let i = startIndex; i < remainingLength; i++) {
+        current.push(i);
+        choosePositions(i + 1, current);
+        current.pop();
+      }
+    }
+
+    if (replaceCount === 0) {
+      positions.push([]);
+    } else {
+      choosePositions(0, []);
+    }
+
+    for (const posGroup of positions) {
+      const posSet = new Set(posGroup);
+
+      function fillLetters(positionIndex, currentLetters) {
+        if (positionIndex >= remainingLength) {
+          const virtualTiles = buildVirtualTiles(currentLetters);
+          const combination = getBestCompleteCombinationForHand(virtualTiles);
+
+          if (combination) {
+            return {
+              letters: currentLetters,
+              combination
+            };
+          }
+
+          return null;
+        }
+
+        if (!posSet.has(positionIndex)) {
+          currentLetters[positionIndex] = originalLetters[positionIndex];
+          return fillLetters(positionIndex + 1, currentLetters);
+        }
+
+        for (const letter of alphabet) {
+          currentLetters[positionIndex] = letter;
+          const result = fillLetters(positionIndex + 1, currentLetters);
+
+          if (result) {
+            return result;
+          }
+        }
+
+        return null;
+      }
+
+      const result = fillLetters(0, [...originalLetters]);
+
+      if (result) {
+        return result;
+      }
+    }
+
+    return null;
+  }
+
+  for (let replaceCount = 0; replaceCount <= remainingLength; replaceCount++) {
+    const result = testWithReplacementCount(replaceCount);
+
+    if (result) {
+      return {
+        replacementNeeded: replaceCount,
+        exampleCombination: result.combination,
+        replacedLetters: result.letters,
+        note: replaceCount === 0
+          ? "剩余字母本身已经可以全部成词。"
+          : `剩余字母最少替换 ${replaceCount} 张后可全部成词。`
+      };
+    }
+  }
+
+  return {
+    replacementNeeded: remainingLength,
+    exampleCombination: [],
+    note: `剩余字母至少需要替换 ${remainingLength} 张。`
+  };
+}
+
+function scoreStrategyPlan(plan) {
+  const words = plan.words || [];
+  const usedLetterCount = words.reduce((sum, word) => sum + word.length, 0);
+  const coreWordCount = words.filter((word) => isCoreWordForCurrentDifficulty(word)).length;
+  const levelTotal = words.reduce((sum, word) => sum + getWordLevelValue(word), 0);
+  const lengthScoreTotal = words.reduce((sum, word) => sum + getWordLengthScore(word.length), 0);
+
+  return (
+    (plan.isWinning ? 1000000 : 0) -
+    (!plan.isWinning && plan.replacementNeeded === 0 ? 500000 : 0) -
+    plan.replacementNeeded * 100000 +
+    usedLetterCount * 1000 +
+    coreWordCount * 300 +
+    levelTotal * 80 +
+    lengthScoreTotal * 20 +
+    words.length * 10
+  );
+}
+
+function buildStrategyPlansForHand(hand) {
+  const candidateWords = buildCandidateWords(hand);
+  const plans = [];
+
+  /*
+    方案0：如果当前手牌已经可以完整成词，直接作为最高优先级。
+  */
+  const completeCombination = searchCombinationByCandidates(hand, candidateWords, {
+    requireCore: false
+  });
+
+  if (completeCombination) {
+    plans.push({
+      words: completeCombination,
+      remainingTiles: [],
+      replacementNeeded: 0,
+      remainingEvaluation: {
+        replacementNeeded: 0,
+        exampleCombination: [],
+        note: "当前手牌已经可以全部成词。"
+      },
+      isWinning: isValidWinningCombination(completeCombination)
+    });
+  }
+
+  /*
+    方案1：从候选词中选前若干个高价值词作为起点，
+    逐个尝试“先固定一个词，再评估剩余字母离胡牌多远”。
+  */
+  const seedWords = candidateWords
+    .sort((a, b) => {
+      const coreDiff =
+        (isCoreWordForCurrentDifficulty(b) ? 1 : 0) -
+        (isCoreWordForCurrentDifficulty(a) ? 1 : 0);
+
+      if (coreDiff !== 0) return coreDiff;
+
+      const levelDiff = getWordLevelValue(b) - getWordLevelValue(a);
+      if (levelDiff !== 0) return levelDiff;
+
+      return b.length - a.length;
+    })
+    .slice(0, 40);
+
+  seedWords.forEach((seedWord) => {
+    const seedTiles = getRemainingTilesAfterWords(hand, [seedWord]);
+    const usedTileCount = hand.length - seedTiles.length;
+
+    if (usedTileCount <= 0) return;
+
+    const remainingCombination = getBestCompleteCombinationForHand(seedTiles);
+    let words = [seedWord];
+
+    if (remainingCombination) {
+      words = [seedWord, ...remainingCombination];
+    }
+
+    const remainingTiles = getRemainingTilesAfterWords(hand, words);
+    const remainingEvaluation = estimateReplacementNeededForRemainingTiles(remainingTiles);
+
+    plans.push({
+      words,
+      remainingTiles,
+      replacementNeeded: remainingEvaluation.replacementNeeded,
+      remainingEvaluation,
+      isWinning: remainingTiles.length === 0 && isValidWinningCombination(words)
+    });
+  });
+
+  plans.forEach((plan) => {
+    plan.score = scoreStrategyPlan(plan);
+  });
+
+  return plans
+    .filter((plan) => plan.words && plan.words.length > 0)
+    .sort((a, b) => b.score - a.score);
+}
+
+function findBestStrategyPlan() {
+  const hand = lockedWordGroups.length > 0
+    ? getUnlockedHumanHand()
+    : gameState.players[0].hand;
+
+  if (!hand || hand.length === 0) {
+    return null;
+  }
+
+  const plans = buildStrategyPlansForHand(hand);
+  return plans.length > 0 ? plans[0] : null;
+}
+
+function getStrategyWinDistanceText(plan) {
+  const coreInfo = getCombinationCoreInfo(plan.words);
+
+  if (plan.replacementNeeded === 0) {
+    if (isValidWinningCombination(plan.words)) {
+      return "胡牌距离：已可胡牌";
+    }
+
+    return `胡牌距离：字母已全部成词，但${coreInfo.targetLevelName}及以上词还差 ${
+      coreInfo.requiredCoreWordCount - coreInfo.coreWordCount
+    } 个`;
+  }
+
+  return `胡牌距离：还需最少替换 ${plan.replacementNeeded} 张字母`;
+}
+
+
+function showStrategyAssist() {
+  if (gameState.gameOver) return;
+
+  const assistLevel = getStrategyAssistLevel();
+
+  if (assistLevel === "none") {
+    elements.wordHintPanel.innerHTML = `
+      <div class="fail-result">
+        当前难度已关闭策略辅助。
+      </div>
+    `;
+
+    setMessage("当前难度已关闭策略辅助。");
+    return;
+  }
+
+  const plan = findBestStrategyPlan();
+
+  if (!plan) {
+    elements.wordHintPanel.innerHTML = `
+      <div class="fail-result">
+        当前手牌暂未找到可推荐的组合。建议继续摸牌或使用查词功能。
+      </div>
+    `;
+    setMessage("策略辅助：当前没有找到合适方案。");
+    return;
+  }
+
+  const totalHandLength = lockedWordGroups.length > 0
+    ? getUnlockedHumanHand().length
+    : gameState.players[0].hand.length;
+
+  const usedLetterCount = plan.words.reduce((sum, word) => sum + word.length, 0);
+  const remainingLetters = plan.remainingTiles.map((tile) => tile.letter).join(" ");
+
+  if (assistLevel === "distance") {
+
+    elements.wordHintPanel.innerHTML = `
+      <div class="strategy-result">
+
+        <strong>策略分析：</strong>
+
+        <br>
+
+        ${getStrategyWinDistanceText(plan)}
+
+        <br>
+
+        剩余字母：${remainingLetters || "无"}
+
+        <br>
+
+        ${plan.remainingEvaluation.note}
+
+      </div>
+    `;
+
+    setMessage(
+      `策略分析：${getStrategyWinDistanceText(plan)}`
+    );
+
+    return;
+  }
+
+
+  elements.wordHintPanel.innerHTML = `
+    <div class="strategy-result">
+      <strong>策略辅助推荐：</strong>
+      <div class="level-mismatch-list">
+        ${plan.words
+          .map((word) => `
+            <span class="word-combo" title="${getWordMeaning(word)}｜${getLevelName(getWordLevel(word))}">
+              ${displayWord(word)}
+            </span>
+          `)
+          .join(" + ")}
+      </div>
+
+      <br />
+      使用字母：${usedLetterCount} / ${totalHandLength}
+      <br />
+      剩余字母：${remainingLetters || "无"}
+      <br />
+      ${getStrategyWinDistanceText(plan)}
+      <br />
+      ${plan.remainingEvaluation.note}
+      <br />
+      <br />
+
+      <button
+        type="button"
+        class="secondary-btn apply-strategy-btn"
+        data-words="${plan.words.join(",")}"
+      >
+        采用方案
+      </button>
+    </div>
+  `;
+
+  setMessage(`策略辅助：推荐 ${plan.words.map(displayWord).join(" + ")}，胡牌距离 ${plan.replacementNeeded}。`);
+}
+
+function applyStrategyPlan(words) {
+  if (!words || words.length === 0 || gameState.gameOver) return;
+
+  lockedWordGroups = [];
+
+  words.forEach((word) => {
+    lockWordToFront(word);
+  });
+
+  setMessage(`已采用策略辅助方案：${words.map(displayWord).join(" + ")}。`);
+}
+
 
 function showWordHints() {
   const possibleWords = findPossibleWordsFromHand();
@@ -1271,9 +1773,15 @@ function showWordHints() {
         adjustment > 0 ? `+${adjustment}` : adjustment < 0 ? `${adjustment}` : "0";
 
       return `
-        <span class="word-chip" title="${getLevelName(level)}｜等级修正${adjustmentText}">
+        <button
+          type="button"
+          class="word-chip lock-word-btn"
+          data-word="${word}"
+          title="点击固定 ${displayWord(word)} 到手牌最前端｜${getLevelName(level)}｜等级修正${adjustmentText}"
+        >
           ${displayWord(word)}
-        </span>
+        </button>
+
         <span class="word-meaning">${meaning}</span>
       `;
     })
@@ -2662,6 +3170,10 @@ function renderHands() {
         }
 
         tileElement.textContent = tile.letter;
+        if (isTileLocked(tile)) {
+          tileElement.classList.add("locked");
+          tileElement.title = "已固定单词牌";
+        }
         tileElement.dataset.index = tileIndex;
         tileElement.draggable = false;
         tileElement.title = gameState.gameOver
@@ -2807,6 +3319,30 @@ function renderDiscardPile() {
   });
 }
 
+function getStrategyAssistLevel() {
+  switch (gameState.difficulty) {
+    case "basic":
+      return "full";
+
+    case "intermediate":
+      return "full";
+
+    case "advanced":
+      return "distance";
+
+    case "academic":
+      return "distance";
+
+    case "challenge":
+      return "none";
+
+    default:
+      return "full";
+  }
+}
+
+
+
 function updateButtons() {
   const currentPlayer = getCurrentPlayer();
   const isHumanTurn = currentPlayer.isHuman;
@@ -2848,6 +3384,20 @@ function updateButtons() {
       gameState.gameOver || !isHumanTurn || !gameState.hasDrawnThisTurn;
   }
 
+  if (elements.unlockLastWordBtn) {
+    elements.unlockLastWordBtn.disabled =
+      gameState.gameOver || lockedWordGroups.length === 0;
+  }
+
+  if (elements.clearLockedWordsBtn) {
+    elements.clearLockedWordsBtn.disabled =
+      gameState.gameOver || lockedWordGroups.length === 0;
+  }
+
+  if (elements.strategyAssistBtn) {
+    elements.strategyAssistBtn.disabled = gameState.gameOver;
+  }
+
   elements.discardSelectedBtn.disabled =
     gameState.gameOver ||
     !isHumanTurn ||
@@ -2864,9 +3414,20 @@ if (elements.autoBtn) {
 }
 elements.sortBtn.addEventListener("click", sortHumanHand);
 elements.wordHintBtn.addEventListener("click", showWordHints);
+if (elements.strategyAssistBtn) {
+  elements.strategyAssistBtn.addEventListener("click", showStrategyAssist);
+}
 
 if (elements.winCheckBtn) {
   elements.winCheckBtn.addEventListener("click", checkWin);
+}
+
+if (elements.unlockLastWordBtn) {
+  elements.unlockLastWordBtn.addEventListener("click", unlockLastWordGroup);
+}
+
+if (elements.clearLockedWordsBtn) {
+  elements.clearLockedWordsBtn.addEventListener("click", clearLockedWordGroups);
 }
 
 if (elements.dictSearchBtn) {
@@ -2888,6 +3449,34 @@ if (elements.difficultySelect) {
 }
 
 document.addEventListener("click", (event) => {
+
+  const applyStrategyButton = event.target.closest(".apply-strategy-btn");
+
+  if (applyStrategyButton) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const words = String(applyStrategyButton.dataset.words || "")
+      .split(",")
+      .map((word) => word.trim())
+      .filter(Boolean);
+
+    applyStrategyPlan(words);
+    return;
+  }
+
+
+  const lockWordButton = event.target.closest(".lock-word-btn");
+
+  if (lockWordButton) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const word = lockWordButton.dataset.word;
+    lockWordToFront(word);
+    return;
+  }
+
   const addReviewButton = event.target.closest(".add-review-word-btn");
 
   if (addReviewButton) {
