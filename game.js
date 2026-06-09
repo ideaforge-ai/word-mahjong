@@ -79,6 +79,7 @@ const DIFFICULTY_CONFIG = {
 
 let draggedTileIndex = null;
 let selectedTileIndex = null;
+let pointerDragState = null;
 
 let reviewModeState = {
   active: false,
@@ -2667,100 +2668,109 @@ function renderHands() {
           ? "游戏已结束"
           : "点击选中；拖动可调整顺序";
 
-        let startX = 0;
-        let startY = 0;
-        let isDragging = false;
-        let ghostTile = null;
-
         tileElement.addEventListener("pointerdown", (e) => {
           if (gameState.gameOver) return;
 
-          startX = e.clientX;
-          startY = e.clientY;
-          isDragging = false;
           draggedTileIndex = tileIndex;
 
-          tileElement.setPointerCapture(e.pointerId);
+          pointerDragState = {
+            pointerId: e.pointerId,
+            fromIndex: tileIndex,
+            startX: e.clientX,
+            startY: e.clientY,
+            hasMoved: false,
+            tileElement
+          };
+
+          try {
+            tileElement.setPointerCapture(e.pointerId);
+          } catch (error) {
+            // 某些浏览器可能不支持或释放过快，忽略即可
+          }
         });
 
         tileElement.addEventListener("pointermove", (e) => {
-          if (gameState.gameOver || draggedTileIndex === null) return;
-
-          const dx = e.clientX - startX;
-          const dy = e.clientY - startY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 8 && !isDragging) return;
-
-          if (!isDragging) {
-            isDragging = true;
-            tileElement.classList.add("dragging");
-
-            ghostTile = tileElement.cloneNode(true);
-            ghostTile.classList.add("dragging");
-            ghostTile.style.position = "fixed";
-            ghostTile.style.left = "0px";
-            ghostTile.style.top = "0px";
-            ghostTile.style.zIndex = "9999";
-            ghostTile.style.pointerEvents = "none";
-            ghostTile.style.opacity = "0.85";
-            document.body.appendChild(ghostTile);
+          if (
+            !pointerDragState ||
+            pointerDragState.pointerId !== e.pointerId ||
+            gameState.gameOver
+          ) {
+            return;
           }
 
-          if (ghostTile) {
-            ghostTile.style.transform =
-              `translate(${e.clientX - 22}px, ${e.clientY - 28}px) scale(1.08)`;
+          const moveDistance = Math.hypot(
+            e.clientX - pointerDragState.startX,
+            e.clientY - pointerDragState.startY
+          );
+
+          if (moveDistance <= 8) {
+            return;
           }
+
+          pointerDragState.hasMoved = true;
+          tileElement.classList.add("dragging");
 
           e.preventDefault();
         });
 
         tileElement.addEventListener("pointerup", (e) => {
-          if (gameState.gameOver) return;
+          if (
+            !pointerDragState ||
+            pointerDragState.pointerId !== e.pointerId
+          ) {
+            return;
+          }
+
+          const dragState = pointerDragState;
 
           tileElement.classList.remove("dragging");
 
-          if (ghostTile) {
-            ghostTile.remove();
-            ghostTile = null;
+          try {
+            tileElement.releasePointerCapture(e.pointerId);
+          } catch (error) {
+            // 指针已释放时忽略
           }
 
-          if (!isDragging) {
+          pointerDragState = null;
+
+          if (gameState.gameOver) {
+            draggedTileIndex = null;
+            return;
+          }
+
+          if (!dragState.hasMoved) {
             draggedTileIndex = null;
             selectHumanTile(tileIndex);
             return;
           }
 
-          const targetIndex = getDropTargetIndexByPosition(
-            e.clientX,
-            e.clientY
-          );
+          const targetIndex = getDropTargetIndexByPosition(e.clientX, e.clientY);
 
           if (targetIndex === "end") {
-            moveHumanTileToEnd(draggedTileIndex);
+            moveHumanTileToEnd(dragState.fromIndex);
           } else if (targetIndex !== null) {
-            moveHumanTile(draggedTileIndex, targetIndex);
+            moveHumanTile(dragState.fromIndex, targetIndex);
           } else {
             draggedTileIndex = null;
+            render();
           }
 
-isDragging = false;
-e.preventDefault();
-
-          isDragging = false;
           e.preventDefault();
         });
 
         tileElement.addEventListener("pointercancel", () => {
           tileElement.classList.remove("dragging");
-
-          if (ghostTile) {
-            ghostTile.remove();
-            ghostTile = null;
-          }
-
           draggedTileIndex = null;
-          isDragging = false;
+          pointerDragState = null;
+        });
+
+        tileElement.addEventListener("lostpointercapture", () => {
+          tileElement.classList.remove("dragging");
+
+          if (pointerDragState && pointerDragState.tileElement === tileElement) {
+            draggedTileIndex = null;
+            pointerDragState = null;
+          }
         });
 
         handElement.appendChild(tileElement);
